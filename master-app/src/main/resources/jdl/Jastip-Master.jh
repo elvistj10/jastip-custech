@@ -1,0 +1,97 @@
+entity Country{
+	countryName	String required, 
+    image ImageBlob,
+    imageUrl String, 
+    imageThumbUrl String,
+    imageFlag ImageBlob,
+    imageFlagUrl String, 
+    imageFlagThumbUrl String,
+    countryCode String required
+}
+
+entity Province{
+	provinceName String required
+}
+
+entity City{
+    cityName String required
+}
+
+entity PostalCode{
+    postalCode String required
+}
+
+entity ServiceFee{
+	percentageFee Double,
+    fixNominalFee Double,
+    minimumNominalFee Double, 
+    minimumNominalPrice Double, 
+    maximumNominalPrice Double, 
+    startDateTime Instant required, 
+    endDateTime Instant, 
+    activeStatus Boolean
+}
+
+entity PackageSize{
+	packageSizeName String required, 
+    packageSizeDesciption String required, 
+    packageSizeIcon ImageBlob, 
+    packageSizeIconUrl String
+}
+
+entity Bank{
+	bankName String required, 
+    activeStatus Boolean
+}
+
+entity BusinessAccount{
+	coorperateId String required, 
+    accountNumber String required,
+    bankName String
+}
+
+entity ItemCategory{
+	itemCategoryName String required, 
+    itemCategoryIcon ImageBlob,
+    itemCategoryIconUrl String
+}
+
+entity ItemSubCategory{
+	itemSubCategoryName String required,
+    itemSubCategoryIcon ImageBlob,
+    itemSubCategoryIconUrl String
+}
+
+entity Updates{
+	entityName String required, 
+    entityId Long, 
+    updateType UpdateType,
+    updateDateTime Instant
+}
+
+entity MasterAuditConfig{
+	entityName String required, 
+    activeStatus Boolean
+}
+
+entity MasterAudit{
+	entityName String required, 
+    entityId Long required,    
+}
+
+enum UpdateType{
+	CREATE, UPDATE
+}
+
+relationship ManyToOne{
+	PostalCode{city(cityName)} to City, 
+	City{province(provinceName)} to Province, 
+    Province{country(countryName)} to Country
+}
+
+relationship OneToMany {
+	ItemCategory{itemSubCategory(itemSubCategoryName)} to ItemSubCategory{itemCategory(itemCategoryName)}
+}
+
+
+paginate Country, Province, City, PostalCode, ServiceFee, PackageSize, Bank, BusinessAccount, ItemCategory, ItemSubCategory, Updates, MasterAudit with infinite-scroll

@@ -1,0 +1,36 @@
+
+<div>
+    <h2><span>M Sub Category</span> {{vm.mSubCategory.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Sub Category Name</span></dt>
+        <dd>
+            <span>{{vm.mSubCategory.subCategoryName}}</span>
+        </dd>
+        <dt><span>Sub Category Icon</span></dt>
+        <dd>
+            <div ng-if="vm.mSubCategory.subCategoryIcon">
+                <a ng-click="vm.openFile(vm.mSubCategory.subCategoryIconContentType, vm.mSubCategory.subCategoryIcon)">
+                    <img data-ng-src="{{'data:' + vm.mSubCategory.subCategoryIconContentType + ';base64,' + vm.mSubCategory.subCategoryIcon}}" style="max-width: 100%;" alt="mSubCategory image"/>
+                </a>
+                {{vm.mSubCategory.subCategoryIconContentType}}, {{vm.byteSize(vm.mSubCategory.subCategoryIcon)}}
+            </div>
+        </dd>
+        <dt><span>M Category</span></dt>
+        <dd>
+            <a ui-sref="m-category-detail({id:vm.mSubCategory.mCategory.id})">{{vm.mSubCategory.mCategory.categoryName}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="m-sub-category-detail.edit({id:vm.mSubCategory.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

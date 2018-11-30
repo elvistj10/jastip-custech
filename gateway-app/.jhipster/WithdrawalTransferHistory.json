@@ -1,0 +1,29 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "withdrawalId",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "nominal",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "destBankName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "destBankAccount",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20181126100155",
+    "entityTableName": "withdrawal_transfer_history",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "microserviceName": "WalletApp"
+}

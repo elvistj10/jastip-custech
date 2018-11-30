@@ -1,0 +1,43 @@
+
+<div>
+    <h2><span>Payment</span> {{vm.payment.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Posting Id</span></dt>
+        <dd>
+            <span>{{vm.payment.postingId}}</span>
+        </dd>
+        <dt><span>Offering Id</span></dt>
+        <dd>
+            <span>{{vm.payment.offeringId}}</span>
+        </dd>
+        <dt><span>Payment Status</span></dt>
+        <dd>
+            <span>{{vm.payment.paymentStatus}}</span>
+        </dd>
+        <dt><span>Payment Method</span></dt>
+        <dd>
+            <span>{{vm.payment.paymentMethod}}</span>
+        </dd>
+        <dt><span>Nominal</span></dt>
+        <dd>
+            <span>{{vm.payment.nominal}}</span>
+        </dd>
+        <dt><span>Payment Date Time</span></dt>
+        <dd>
+            <span>{{vm.payment.paymentDateTime | date:'medium'}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="payment-detail.edit({id:vm.payment.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

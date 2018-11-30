@@ -1,0 +1,32 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "feedback",
+            "otherEntityName": "feedback",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "response"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "message",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "responseDateTime",
+            "fieldType": "Instant"
+        }
+    ],
+    "changelogDate": "20181016075107",
+    "entityTableName": "feedback_response",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "microserviceName": "ProfilesApp"
+}

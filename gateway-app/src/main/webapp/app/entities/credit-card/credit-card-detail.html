@@ -1,0 +1,43 @@
+
+<div>
+    <h2><span>Credit Card</span> {{vm.creditCard.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Cc Number</span></dt>
+        <dd>
+            <span>{{vm.creditCard.ccNumber}}</span>
+        </dd>
+        <dt><span>Cvc</span></dt>
+        <dd>
+            <span>{{vm.creditCard.cvc}}</span>
+        </dd>
+        <dt><span>Expire Mon</span></dt>
+        <dd>
+            <span>{{vm.creditCard.expireMon | date:'medium'}}</span>
+        </dd>
+        <dt><span>Expire Year</span></dt>
+        <dd>
+            <span>{{vm.creditCard.expireYear | date:'medium'}}</span>
+        </dd>
+        <dt><span>Default Credit Card</span></dt>
+        <dd>
+            <span>{{vm.creditCard.defaultCreditCard}}</span>
+        </dd>
+        <dt><span>Profile</span></dt>
+        <dd>
+            <a ui-sref="profile-detail({id:vm.creditCard.profile.id})">{{vm.creditCard.profile.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="credit-card-detail.edit({id:vm.creditCard.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,128 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myOfferingDeliveryServiceLabel">Create or edit a Offering Delivery Service</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.offeringDeliveryService.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.offeringDeliveryService.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_sentToCountryId">Sent To Country Id</label>
+            <input type="number" class="form-control" name="sentToCountryId" id="field_sentToCountryId"
+                    ng-model="vm.offeringDeliveryService.sentToCountryId"
+                    required/>
+            <div ng-show="editForm.sentToCountryId.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.sentToCountryId.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.sentToCountryId.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_sentToCountryName">Sent To Country Name</label>
+            <input type="text" class="form-control" name="sentToCountryName" id="field_sentToCountryName"
+                    ng-model="vm.offeringDeliveryService.sentToCountryName"
+                    required/>
+            <div ng-show="editForm.sentToCountryName.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.sentToCountryName.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_sentToCityId">Sent To City Id</label>
+            <input type="number" class="form-control" name="sentToCityId" id="field_sentToCityId"
+                    ng-model="vm.offeringDeliveryService.sentToCityId"
+                    required/>
+            <div ng-show="editForm.sentToCityId.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.sentToCityId.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.sentToCityId.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_sentToCityName">Sent To City Name</label>
+            <input type="text" class="form-control" name="sentToCityName" id="field_sentToCityName"
+                    ng-model="vm.offeringDeliveryService.sentToCityName"
+                    required/>
+            <div ng-show="editForm.sentToCityName.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.sentToCityName.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_packageSizeId">Package Size Id</label>
+            <input type="number" class="form-control" name="packageSizeId" id="field_packageSizeId"
+                    ng-model="vm.offeringDeliveryService.packageSizeId"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_packageSizeName">Package Size Name</label>
+            <input type="text" class="form-control" name="packageSizeName" id="field_packageSizeName"
+                    ng-model="vm.offeringDeliveryService.packageSizeName"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_deliveryServiceId">Delivery Service Id</label>
+            <input type="number" class="form-control" name="deliveryServiceId" id="field_deliveryServiceId"
+                    ng-model="vm.offeringDeliveryService.deliveryServiceId"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_deliveryServiceName">Delivery Service Name</label>
+            <input type="text" class="form-control" name="deliveryServiceName" id="field_deliveryServiceName"
+                    ng-model="vm.offeringDeliveryService.deliveryServiceName"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_deliveryFee">Delivery Fee</label>
+            <input type="number" class="form-control" name="deliveryFee" id="field_deliveryFee"
+                    ng-model="vm.offeringDeliveryService.deliveryFee"
+                    min="0"/>
+            <div ng-show="editForm.deliveryFee.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.deliveryFee.$error.min" translate-value-min="0">
+                    This field should be at least 0.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.deliveryFee.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="field_offering">Offering</label>
+            <select class="form-control" id="field_offering" name="offering" ng-model="vm.offeringDeliveryService.offering" ng-options="offering as offering.id for offering in vm.offerings | orderBy:'id' track by offering.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

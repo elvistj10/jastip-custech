@@ -1,0 +1,129 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myOfferingPaymentLabel">Create or edit a Offering Payment</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.offeringPayment.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.offeringPayment.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_finalPriceItem">Final Price Item</label>
+            <input type="number" class="form-control" name="finalPriceItem" id="field_finalPriceItem"
+                    ng-model="vm.offeringPayment.finalPriceItem"
+                    min="0"/>
+            <div ng-show="editForm.finalPriceItem.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.finalPriceItem.$error.min" translate-value-min="0">
+                    This field should be at least 0.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.finalPriceItem.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_finalServiceFee">Final Service Fee</label>
+            <input type="number" class="form-control" name="finalServiceFee" id="field_finalServiceFee"
+                    ng-model="vm.offeringPayment.finalServiceFee"
+                    min="0"/>
+            <div ng-show="editForm.finalServiceFee.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.finalServiceFee.$error.min" translate-value-min="0">
+                    This field should be at least 0.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.finalServiceFee.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_finalJastipFee">Final Jastip Fee</label>
+            <input type="number" class="form-control" name="finalJastipFee" id="field_finalJastipFee"
+                    ng-model="vm.offeringPayment.finalJastipFee"
+                    min="0"/>
+            <div ng-show="editForm.finalJastipFee.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.finalJastipFee.$error.min" translate-value-min="0">
+                    This field should be at least 0.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.finalJastipFee.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_uniqueIdentifier">Unique Identifier</label>
+            <input type="number" class="form-control" name="uniqueIdentifier" id="field_uniqueIdentifier"
+                    ng-model="vm.offeringPayment.uniqueIdentifier"
+                    min="0"/>
+            <div ng-show="editForm.uniqueIdentifier.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.uniqueIdentifier.$error.min" translate-value-min="0">
+                    This field should be at least 0.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.uniqueIdentifier.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_finalTotalFee">Final Total Fee</label>
+            <input type="number" class="form-control" name="finalTotalFee" id="field_finalTotalFee"
+                    ng-model="vm.offeringPayment.finalTotalFee"
+                    min="0"/>
+            <div ng-show="editForm.finalTotalFee.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.finalTotalFee.$error.min" translate-value-min="0">
+                    This field should be at least 0.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.finalTotalFee.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_paymentMethod">Payment Method</label>
+            <select class="form-control" name="paymentMethod" ng-model="vm.offeringPayment.paymentMethod" id="field_paymentMethod">
+                <option value="WALLET">WALLET</option>
+                <option value="BANK_TRANSFER">BANK_TRANSFER</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_paymentConfirmDateTime">Payment Confirm Date Time</label>
+                <div class="input-group">
+                    <input id="field_paymentConfirmDateTime" type="text" class="form-control" name="paymentConfirmDateTime" datetime-picker="{{dateformat}}" ng-model="vm.offeringPayment.paymentConfirmDateTime" is-open="vm.datePickerOpenStatus.paymentConfirmDateTime"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('paymentConfirmDateTime')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+
+        <div class="form-group">
+            <label for="field_offering">Offering</label>
+            <select class="form-control" id="field_offering" name="offering" ng-model="vm.offeringPayment.offering" ng-options="offering as offering.id for offering in vm.offerings | orderBy:'id' track by offering.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

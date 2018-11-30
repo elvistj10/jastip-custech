@@ -1,0 +1,74 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "offering",
+            "otherEntityName": "offering",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "offeringDeliveryService"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "sentToCountryId",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "sentToCountryName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "sentToCityId",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "sentToCityName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "packageSizeId",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "packageSizeName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "deliveryServiceId",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "deliveryServiceName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "deliveryFee",
+            "fieldType": "Double",
+            "fieldValidateRules": [
+                "min"
+            ],
+            "fieldValidateRulesMin": 0
+        }
+    ],
+    "changelogDate": "20181128032806",
+    "entityTableName": "offering_delivery_service",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "microserviceName": "TransactionApp"
+}

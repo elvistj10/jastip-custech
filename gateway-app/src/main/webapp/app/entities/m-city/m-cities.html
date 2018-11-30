@@ -1,0 +1,62 @@
+<div>
+    <h2>M Cities</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="m-city.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new M City
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span>ID</span></th>
+                    <th><span>City Name</span></th>
+                    <th><span>Postal Code</span></th>
+                    <th><span>Province</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="mCity in vm.mCities track by mCity.id">
+                    <td><a ui-sref="m-city-detail({id:mCity.id})">{{mCity.id}}</a></td>
+                    <td>{{mCity.cityName}}</td>
+                    <td>{{mCity.postalCode}}</td>
+                    <td>
+                        <a ui-sref="m-province-detail({id:mCity.province.id})">{{mCity.province.provinceName}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="m-city-detail({id:mCity.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="m-city.edit({id:mCity.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="m-city.delete({id:mCity.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,124 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myFeedbackLabel">Create or edit a Feedback</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.feedback.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.feedback.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_feedbackerId">Feedbacker Id</label>
+            <input type="number" class="form-control" name="feedbackerId" id="field_feedbackerId"
+                    ng-model="vm.feedback.feedbackerId"
+                    required/>
+            <div ng-show="editForm.feedbackerId.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.feedbackerId.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.feedbackerId.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_postingId">Posting Id</label>
+            <input type="number" class="form-control" name="postingId" id="field_postingId"
+                    ng-model="vm.feedback.postingId"
+                    required/>
+            <div ng-show="editForm.postingId.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.postingId.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.postingId.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_offeringId">Offering Id</label>
+            <input type="number" class="form-control" name="offeringId" id="field_offeringId"
+                    ng-model="vm.feedback.offeringId"
+                    required/>
+            <div ng-show="editForm.offeringId.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.offeringId.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.offeringId.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_rating">Rating</label>
+            <input type="number" class="form-control" name="rating" id="field_rating"
+                    ng-model="vm.feedback.rating"
+                    required/>
+            <div ng-show="editForm.rating.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.rating.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.rating.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_message">Message</label>
+            <input type="text" class="form-control" name="message" id="field_message"
+                    ng-model="vm.feedback.message"
+                    required/>
+            <div ng-show="editForm.message.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.message.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_feedbackDateTime">Feedback Date Time</label>
+                <div class="input-group">
+                    <input id="field_feedbackDateTime" type="text" class="form-control" name="feedbackDateTime" datetime-picker="{{dateformat}}" ng-model="vm.feedback.feedbackDateTime" is-open="vm.datePickerOpenStatus.feedbackDateTime"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('feedbackDateTime')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+
+        <div class="form-group">
+            <label for="field_response">Response</label>
+            <select class="form-control" id="field_response" name="response" ng-model="vm.feedback.response" ng-options="feedbackResponse as feedbackResponse.id for feedbackResponse in vm.responses | orderBy:'id' track by feedbackResponse.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_profile">Profile</label>
+            <select class="form-control" id="field_profile" name="profile" ng-model="vm.feedback.profile" ng-options="profile as profile.id for profile in vm.profiles track by profile.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

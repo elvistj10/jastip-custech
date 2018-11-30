@@ -1,0 +1,66 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myMSubCategoryLabel">Create or edit a M Sub Category</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.mSubCategory.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.mSubCategory.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_subCategoryName">Sub Category Name</label>
+            <input type="text" class="form-control" name="subCategoryName" id="field_subCategoryName"
+                    ng-model="vm.mSubCategory.subCategoryName"
+                    required/>
+            <div ng-show="editForm.subCategoryName.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.subCategoryName.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setSubCategoryIcon($file, vm.mSubCategory)" ngf-pattern="'image/*'">
+            <label class="control-label" for="field_subCategoryIcon">Sub Category Icon</label>
+            <div>
+                <img data-ng-src="{{'data:' + vm.mSubCategory.subCategoryIconContentType + ';base64,' + vm.mSubCategory.subCategoryIcon}}" style="max-height: 100px;" ng-if="vm.mSubCategory.subCategoryIcon" alt="mSubCategory image"/>
+                <div ng-if="vm.mSubCategory.subCategoryIcon" class="help-block clearfix">
+                    <span class="pull-left">{{vm.mSubCategory.subCategoryIconContentType}}, {{vm.byteSize(vm.mSubCategory.subCategoryIcon)}}</span>
+                    <button type="button" ng-click="vm.mSubCategory.subCategoryIcon=null;vm.mSubCategory.subCategoryIconContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="button" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setSubCategoryIcon($file, vm.mSubCategory)" accept="image/*">
+                    Add image
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="subCategoryIcon" id="field_subCategoryIcon"
+                    ng-model="vm.mSubCategory.subCategoryIcon"
+                    />
+            <input type="hidden" class="form-control" name="subCategoryIconContentType" id="field_subCategoryIconContentType"
+                    ng-model="vm.mSubCategory.subCategoryIconContentType" />
+        </div>
+
+        <div class="form-group">
+            <label for="field_mCategory">M Category</label>
+            <select class="form-control" id="field_mCategory" name="mCategory" ng-model="vm.mSubCategory.mCategory" ng-options="mCategory as mCategory.categoryName for mCategory in vm.mcategories track by mCategory.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

@@ -1,0 +1,112 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myBannerLabel">Create or edit a Banner</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.banner.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.banner.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_bannerTitle">Banner Title</label>
+            <input type="text" class="form-control" name="bannerTitle" id="field_bannerTitle"
+                    ng-model="vm.banner.bannerTitle"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_bannerType">Banner Type</label>
+            <select class="form-control" name="bannerType" ng-model="vm.banner.bannerType" id="field_bannerType">
+                <option value="INTERNAL">INTERNAL</option>
+                <option value="EXTERNAL">EXTERNAL</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_postingType">Posting Type</label>
+            <select class="form-control" name="postingType" ng-model="vm.banner.postingType" id="field_postingType">
+                <option value="TRAVELLER">TRAVELLER</option>
+                <option value="REQUESTOR">REQUESTOR</option>
+            </select>
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setImage($file, vm.banner)" ngf-pattern="'image/*'">
+            <label class="control-label" for="field_image">Image</label>
+            <div>
+                <img data-ng-src="{{'data:' + vm.banner.imageContentType + ';base64,' + vm.banner.image}}" style="max-height: 100px;" ng-if="vm.banner.image" alt="banner image"/>
+                <div ng-if="vm.banner.image" class="help-block clearfix">
+                    <span class="pull-left">{{vm.banner.imageContentType}}, {{vm.byteSize(vm.banner.image)}}</span>
+                    <button type="button" ng-click="vm.banner.image=null;vm.banner.imageContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="button" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setImage($file, vm.banner)" accept="image/*">
+                    Add image
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="image" id="field_image"
+                    ng-model="vm.banner.image"
+                    />
+            <input type="hidden" class="form-control" name="imageContentType" id="field_imageContentType"
+                    ng-model="vm.banner.imageContentType" />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_imageUrl">Image Url</label>
+            <input type="text" class="form-control" name="imageUrl" id="field_imageUrl"
+                    ng-model="vm.banner.imageUrl"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_startDate">Start Date</label>
+                <div class="input-group">
+                    <input id="field_startDate" type="text" class="form-control" name="startDate" datetime-picker="{{dateformat}}" ng-model="vm.banner.startDate" is-open="vm.datePickerOpenStatus.startDate"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('startDate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_endDate">End Date</label>
+                <div class="input-group">
+                    <input id="field_endDate" type="text" class="form-control" name="endDate" datetime-picker="{{dateformat}}" ng-model="vm.banner.endDate" is-open="vm.datePickerOpenStatus.endDate"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('endDate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                    ng-model="vm.banner.description"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_notes">Notes</label>
+            <input type="text" class="form-control" name="notes" id="field_notes"
+                    ng-model="vm.banner.notes"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_query">Query</label>
+            <input type="text" class="form-control" name="query" id="field_query"
+                    ng-model="vm.banner.query"
+                    />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

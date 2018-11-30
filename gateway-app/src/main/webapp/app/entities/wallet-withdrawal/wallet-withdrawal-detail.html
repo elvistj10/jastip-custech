@@ -1,0 +1,47 @@
+
+<div>
+    <h2><span>Wallet Withdrawal</span> {{vm.walletWithdrawal.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Owner Id</span></dt>
+        <dd>
+            <span>{{vm.walletWithdrawal.ownerId}}</span>
+        </dd>
+        <dt><span>Request Date Time</span></dt>
+        <dd>
+            <span>{{vm.walletWithdrawal.requestDateTime | date:'medium'}}</span>
+        </dd>
+        <dt><span>Nominal</span></dt>
+        <dd>
+            <span>{{vm.walletWithdrawal.nominal}}</span>
+        </dd>
+        <dt><span>Dest Bank Name</span></dt>
+        <dd>
+            <span>{{vm.walletWithdrawal.destBankName}}</span>
+        </dd>
+        <dt><span>Dest Bank Account</span></dt>
+        <dd>
+            <span>{{vm.walletWithdrawal.destBankAccount}}</span>
+        </dd>
+        <dt><span>Status</span></dt>
+        <dd>
+            <span>{{vm.walletWithdrawal.status}}</span>
+        </dd>
+        <dt><span>Completed Date Time</span></dt>
+        <dd>
+            <span>{{vm.walletWithdrawal.completedDateTime | date:'medium'}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="wallet-withdrawal-detail.edit({id:vm.walletWithdrawal.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

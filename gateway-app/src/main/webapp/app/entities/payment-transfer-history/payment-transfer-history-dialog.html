@@ -1,0 +1,138 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myPaymentTransferHistoryLabel">Create or edit a Payment Transfer History</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.paymentTransferHistory.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.paymentTransferHistory.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_postingId">Posting Id</label>
+            <input type="number" class="form-control" name="postingId" id="field_postingId"
+                    ng-model="vm.paymentTransferHistory.postingId"
+                    required/>
+            <div ng-show="editForm.postingId.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.postingId.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.postingId.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_offeringId">Offering Id</label>
+            <input type="number" class="form-control" name="offeringId" id="field_offeringId"
+                    ng-model="vm.paymentTransferHistory.offeringId"
+                    required/>
+            <div ng-show="editForm.offeringId.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.offeringId.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.offeringId.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_nominal">Nominal</label>
+            <input type="number" class="form-control" name="nominal" id="field_nominal"
+                    ng-model="vm.paymentTransferHistory.nominal"
+                    required min="0"/>
+            <div ng-show="editForm.nominal.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.nominal.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.nominal.$error.min" translate-value-min="0">
+                    This field should be at least 0.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.nominal.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_paymentConfirmDateTime">Payment Confirm Date Time</label>
+                <div class="input-group">
+                    <input id="field_paymentConfirmDateTime" type="text" class="form-control" name="paymentConfirmDateTime" datetime-picker="{{dateformat}}" ng-model="vm.paymentTransferHistory.paymentConfirmDateTime" is-open="vm.datePickerOpenStatus.paymentConfirmDateTime"
+                    required/>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('paymentConfirmDateTime')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+            <div ng-show="editForm.paymentConfirmDateTime.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.paymentConfirmDateTime.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.paymentConfirmDateTime.$error.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_checkDateTime">Check Date Time</label>
+                <div class="input-group">
+                    <input id="field_checkDateTime" type="text" class="form-control" name="checkDateTime" datetime-picker="{{dateformat}}" ng-model="vm.paymentTransferHistory.checkDateTime" is-open="vm.datePickerOpenStatus.checkDateTime"
+                    required/>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('checkDateTime')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+            <div ng-show="editForm.checkDateTime.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.checkDateTime.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.checkDateTime.$error.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_expiredDateTime">Expired Date Time</label>
+                <div class="input-group">
+                    <input id="field_expiredDateTime" type="text" class="form-control" name="expiredDateTime" datetime-picker="{{dateformat}}" ng-model="vm.paymentTransferHistory.expiredDateTime" is-open="vm.datePickerOpenStatus.expiredDateTime"
+                    required/>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('expiredDateTime')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+            <div ng-show="editForm.expiredDateTime.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.expiredDateTime.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.expiredDateTime.$error.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </p>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

@@ -1,0 +1,40 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "offering",
+            "otherEntityName": "offering",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "offeringDeliveryInfo"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "recipientName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "phoneNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "deliveryAddress",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20181128032805",
+    "entityTableName": "offering_delivery_info",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "microserviceName": "TransactionApp"
+}

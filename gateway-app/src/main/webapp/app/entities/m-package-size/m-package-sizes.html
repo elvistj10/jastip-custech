@@ -1,0 +1,65 @@
+<div>
+    <h2>M Package Sizes</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="m-package-size.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new M Package Size
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span>ID</span></th>
+                    <th><span>Package Size Name</span></th>
+                    <th><span>Package Size Desciption</span></th>
+                    <th><span>Package Size Thumb</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="mPackageSize in vm.mPackageSizes track by mPackageSize.id">
+                    <td><a ui-sref="m-package-size-detail({id:mPackageSize.id})">{{mPackageSize.id}}</a></td>
+                    <td>{{mPackageSize.packageSizeName}}</td>
+                    <td>{{mPackageSize.packageSizeDesciption}}</td>
+                    <td>
+                        <a ng-if="mPackageSize.packageSizeThumb" ng-click="vm.openFile(mPackageSize.packageSizeThumbContentType, mPackageSize.packageSizeThumb)">
+                            <img data-ng-src="{{'data:' + mPackageSize.packageSizeThumbContentType + ';base64,' + mPackageSize.packageSizeThumb}}" style="max-height: 30px;" alt="mPackageSize image"/>
+                        </a>
+                        <span ng-if="mPackageSize.packageSizeThumb">{{mPackageSize.packageSizeThumbContentType}}, {{vm.byteSize(mPackageSize.packageSizeThumb)}}</span>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="m-package-size-detail({id:mPackageSize.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="m-package-size.edit({id:mPackageSize.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="m-package-size.delete({id:mPackageSize.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

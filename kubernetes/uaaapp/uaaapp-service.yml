@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: uaaapp
+  namespace: default
+  labels:
+    app: uaaapp
+spec:
+  selector:
+    app: uaaapp
+  ports:
+  - name: web
+    port: 9999

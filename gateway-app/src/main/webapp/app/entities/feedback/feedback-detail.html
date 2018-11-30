@@ -1,0 +1,51 @@
+
+<div>
+    <h2><span>Feedback</span> {{vm.feedback.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Feedbacker Id</span></dt>
+        <dd>
+            <span>{{vm.feedback.feedbackerId}}</span>
+        </dd>
+        <dt><span>Posting Id</span></dt>
+        <dd>
+            <span>{{vm.feedback.postingId}}</span>
+        </dd>
+        <dt><span>Offering Id</span></dt>
+        <dd>
+            <span>{{vm.feedback.offeringId}}</span>
+        </dd>
+        <dt><span>Rating</span></dt>
+        <dd>
+            <span>{{vm.feedback.rating}}</span>
+        </dd>
+        <dt><span>Message</span></dt>
+        <dd>
+            <span>{{vm.feedback.message}}</span>
+        </dd>
+        <dt><span>Feedback Date Time</span></dt>
+        <dd>
+            <span>{{vm.feedback.feedbackDateTime | date:'medium'}}</span>
+        </dd>
+        <dt><span>Response</span></dt>
+        <dd>
+            <a ui-sref="feedback-response-detail({id:vm.feedback.response.id})">{{vm.feedback.response.id}}</a>
+        </dd>
+        <dt><span>Profile</span></dt>
+        <dd>
+            <a ui-sref="profile-detail({id:vm.feedback.profile.id})">{{vm.feedback.profile.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="feedback-detail.edit({id:vm.feedback.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

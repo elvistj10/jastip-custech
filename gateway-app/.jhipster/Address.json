@@ -1,0 +1,88 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "profile",
+            "otherEntityName": "profile",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength"
+            ],
+            "fieldValidateRulesMinlength": 3
+        },
+        {
+            "fieldName": "countryId",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "countryName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "proviceId",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "provinceName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "cityId",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "cityName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "postalCode",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "address",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength"
+            ],
+            "fieldValidateRulesMinlength": 10
+        },
+        {
+            "fieldName": "phoneNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "mobilePhoneNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "defaultAddress",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20181016075059",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "address",
+    "jpaMetamodelFiltering": false,
+    "pagination": "infinite-scroll",
+    "microserviceName": "ProfilesApp",
+    "searchEngine": "elasticsearch"
+}

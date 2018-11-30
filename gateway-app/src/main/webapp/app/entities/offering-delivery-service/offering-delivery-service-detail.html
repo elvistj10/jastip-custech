@@ -1,0 +1,59 @@
+
+<div>
+    <h2><span>Offering Delivery Service</span> {{vm.offeringDeliveryService.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Sent To Country Id</span></dt>
+        <dd>
+            <span>{{vm.offeringDeliveryService.sentToCountryId}}</span>
+        </dd>
+        <dt><span>Sent To Country Name</span></dt>
+        <dd>
+            <span>{{vm.offeringDeliveryService.sentToCountryName}}</span>
+        </dd>
+        <dt><span>Sent To City Id</span></dt>
+        <dd>
+            <span>{{vm.offeringDeliveryService.sentToCityId}}</span>
+        </dd>
+        <dt><span>Sent To City Name</span></dt>
+        <dd>
+            <span>{{vm.offeringDeliveryService.sentToCityName}}</span>
+        </dd>
+        <dt><span>Package Size Id</span></dt>
+        <dd>
+            <span>{{vm.offeringDeliveryService.packageSizeId}}</span>
+        </dd>
+        <dt><span>Package Size Name</span></dt>
+        <dd>
+            <span>{{vm.offeringDeliveryService.packageSizeName}}</span>
+        </dd>
+        <dt><span>Delivery Service Id</span></dt>
+        <dd>
+            <span>{{vm.offeringDeliveryService.deliveryServiceId}}</span>
+        </dd>
+        <dt><span>Delivery Service Name</span></dt>
+        <dd>
+            <span>{{vm.offeringDeliveryService.deliveryServiceName}}</span>
+        </dd>
+        <dt><span>Delivery Fee</span></dt>
+        <dd>
+            <span>{{vm.offeringDeliveryService.deliveryFee}}</span>
+        </dd>
+        <dt><span>Offering</span></dt>
+        <dd>
+            <a ui-sref="offering-detail({id:vm.offeringDeliveryService.offering.id})">{{vm.offeringDeliveryService.offering.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="offering-delivery-service-detail.edit({id:vm.offeringDeliveryService.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

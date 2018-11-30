@@ -1,0 +1,44 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "posting",
+            "otherEntityName": "posting",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "subComment",
+            "otherEntityName": "subComment",
+            "otherEntityRelationshipName": "comment"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "profileId",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "comment",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "commentDateTime",
+            "fieldType": "Instant"
+        }
+    ],
+    "changelogDate": "20181128032810",
+    "entityTableName": "comment",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "microserviceName": "TransactionApp"
+}

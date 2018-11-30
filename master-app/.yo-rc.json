@@ -1,0 +1,33 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.cus.jastip.master"
+    },
+    "jhipsterVersion": "4.14.0",
+    "baseName": "MasterApp",
+    "packageName": "com.cus.jastip.master",
+    "packageFolder": "com/cus/jastip/master",
+    "serverPort": "8418",
+    "authenticationType": "uaa",
+    "uaaBaseName": "UaaApp",
+    "cacheProvider": "no",
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "mysql",
+    "searchEngine": "elasticsearch",
+    "messageBroker": false,
+    "serviceDiscoveryType": "eureka",
+    "buildTool": "maven",
+    "enableSocialSignIn": false,
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "60e38fa817aa6695b0c9d21df476aaf821081cf4",
+    "enableTranslation": false,
+    "applicationType": "microservice",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "clientPackageManager": "yarn",
+    "skipClient": true,
+    "skipUserManagement": true
+  }
+}

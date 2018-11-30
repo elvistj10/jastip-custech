@@ -1,0 +1,62 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "offering",
+            "otherEntityName": "offering",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "offeringCourier"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "courierReceiptNo",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "courierReceiptImg",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        },
+        {
+            "fieldName": "courierReceiptImgUrl",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "courierReceiptImgThumbUrl",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "courierSendDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "courierDeliveryDay",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "min"
+            ],
+            "fieldValidateRulesMin": 0
+        },
+        {
+            "fieldName": "courierEstDeliveredDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "confirmReceivedDateTime",
+            "fieldType": "Instant"
+        }
+    ],
+    "changelogDate": "20181128032809",
+    "entityTableName": "offering_courier",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "microserviceName": "TransactionApp"
+}

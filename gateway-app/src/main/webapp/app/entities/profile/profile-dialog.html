@@ -1,0 +1,384 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myProfileLabel">Create or edit a Profile</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.profile.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.profile.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="vm.profile.name"
+                    required ng-minlength="3"/>
+            <div ng-show="editForm.name.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.name.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.name.$error.minlength" translate-value-min="3">
+                    This field is required to be at least 3 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_status">Status</label>
+            <select class="form-control" name="status" ng-model="vm.profile.status" id="field_status">
+                <option value="NEW">NEW</option>
+                <option value="ACTIVE">ACTIVE</option>
+                <option value="DISABLED">DISABLED</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_activeDate">Active Date</label>
+                <div class="input-group">
+                    <input id="field_activeDate" type="text" class="form-control" name="activeDate" datetime-picker="{{dateformat}}" ng-model="vm.profile.activeDate" is-open="vm.datePickerOpenStatus.activeDate"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('activeDate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setImage($file, vm.profile)">
+            <label class="control-label" for="field_image">Image</label>
+            <div>
+                <div ng-if="vm.profile.image" class="help-block clearfix">
+                    <a class="pull-left" ng-click="vm.openFile(vm.profile.imageContentType, vm.profile.image)">open</a><br>
+                    <span class="pull-left">{{vm.profile.imageContentType}}, {{vm.byteSize(vm.profile.image)}}</span>
+                    <button type="button" ng-click="vm.profile.image=null;vm.profile.imageContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="button" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setImage($file, vm.profile)">
+                    Add blob
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="image" id="field_image"
+                    ng-model="vm.profile.image"
+                    />
+            <input type="hidden" class="form-control" name="imageContentType" id="field_imageContentType"
+                    ng-model="vm.profile.imageContentType" />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_email">Email</label>
+            <input type="text" class="form-control" name="email" id="field_email"
+                    ng-model="vm.profile.email"
+                    required/>
+            <div ng-show="editForm.email.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.email.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_facebookAccount">Facebook Account</label>
+            <input type="text" class="form-control" name="facebookAccount" id="field_facebookAccount"
+                    ng-model="vm.profile.facebookAccount"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_googleAccount">Google Account</label>
+            <input type="text" class="form-control" name="googleAccount" id="field_googleAccount"
+                    ng-model="vm.profile.googleAccount"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_phoneNumber">Phone Number</label>
+            <input type="text" class="form-control" name="phoneNumber" id="field_phoneNumber"
+                    ng-model="vm.profile.phoneNumber"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_countryId">Country Id</label>
+            <input type="number" class="form-control" name="countryId" id="field_countryId"
+                    ng-model="vm.profile.countryId"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_countryName">Country Name</label>
+            <input type="text" class="form-control" name="countryName" id="field_countryName"
+                    ng-model="vm.profile.countryName"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_cityId">City Id</label>
+            <input type="number" class="form-control" name="cityId" id="field_cityId"
+                    ng-model="vm.profile.cityId"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_cityName">City Name</label>
+            <input type="text" class="form-control" name="cityName" id="field_cityName"
+                    ng-model="vm.profile.cityName"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_averageRating">Average Rating</label>
+            <input type="number" class="form-control" name="averageRating" id="field_averageRating"
+                    ng-model="vm.profile.averageRating"
+                    min="0"/>
+            <div ng-show="editForm.averageRating.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.averageRating.$error.min" translate-value-min="0">
+                    This field should be at least 0.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.averageRating.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_fiveStarCount">Five Star Count</label>
+            <input type="number" class="form-control" name="fiveStarCount" id="field_fiveStarCount"
+                    ng-model="vm.profile.fiveStarCount"
+                    min="0"/>
+            <div ng-show="editForm.fiveStarCount.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.fiveStarCount.$error.min" translate-value-min="0">
+                    This field should be at least 0.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.fiveStarCount.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_fourStarCount">Four Star Count</label>
+            <input type="number" class="form-control" name="fourStarCount" id="field_fourStarCount"
+                    ng-model="vm.profile.fourStarCount"
+                    min="0"/>
+            <div ng-show="editForm.fourStarCount.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.fourStarCount.$error.min" translate-value-min="0">
+                    This field should be at least 0.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.fourStarCount.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_threeStarCount">Three Star Count</label>
+            <input type="number" class="form-control" name="threeStarCount" id="field_threeStarCount"
+                    ng-model="vm.profile.threeStarCount"
+                    min="0"/>
+            <div ng-show="editForm.threeStarCount.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.threeStarCount.$error.min" translate-value-min="0">
+                    This field should be at least 0.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.threeStarCount.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_twoStarCount">Two Star Count</label>
+            <input type="number" class="form-control" name="twoStarCount" id="field_twoStarCount"
+                    ng-model="vm.profile.twoStarCount"
+                    min="0"/>
+            <div ng-show="editForm.twoStarCount.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.twoStarCount.$error.min" translate-value-min="0">
+                    This field should be at least 0.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.twoStarCount.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_oneStarCount">One Star Count</label>
+            <input type="number" class="form-control" name="oneStarCount" id="field_oneStarCount"
+                    ng-model="vm.profile.oneStarCount"
+                    min="0"/>
+            <div ng-show="editForm.oneStarCount.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.oneStarCount.$error.min" translate-value-min="0">
+                    This field should be at least 0.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.oneStarCount.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_followerCount">Follower Count</label>
+            <input type="number" class="form-control" name="followerCount" id="field_followerCount"
+                    ng-model="vm.profile.followerCount"
+                    min="0"/>
+            <div ng-show="editForm.followerCount.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.followerCount.$error.min" translate-value-min="0">
+                    This field should be at least 0.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.followerCount.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_followingCount">Following Count</label>
+            <input type="number" class="form-control" name="followingCount" id="field_followingCount"
+                    ng-model="vm.profile.followingCount"
+                    min="0"/>
+            <div ng-show="editForm.followingCount.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.followingCount.$error.min" translate-value-min="0">
+                    This field should be at least 0.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.followingCount.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_requestCount">Request Count</label>
+            <input type="number" class="form-control" name="requestCount" id="field_requestCount"
+                    ng-model="vm.profile.requestCount"
+                    min="0"/>
+            <div ng-show="editForm.requestCount.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.requestCount.$error.min" translate-value-min="0">
+                    This field should be at least 0.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.requestCount.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_offersCount">Offers Count</label>
+            <input type="number" class="form-control" name="offersCount" id="field_offersCount"
+                    ng-model="vm.profile.offersCount"
+                    min="0"/>
+            <div ng-show="editForm.offersCount.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.offersCount.$error.min" translate-value-min="0">
+                    This field should be at least 0.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.offersCount.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_preOrderCount">Pre Order Count</label>
+            <input type="number" class="form-control" name="preOrderCount" id="field_preOrderCount"
+                    ng-model="vm.profile.preOrderCount"
+                    min="0"/>
+            <div ng-show="editForm.preOrderCount.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.preOrderCount.$error.min" translate-value-min="0">
+                    This field should be at least 0.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.preOrderCount.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_tripCount">Trip Count</label>
+            <input type="number" class="form-control" name="tripCount" id="field_tripCount"
+                    ng-model="vm.profile.tripCount"
+                    min="0"/>
+            <div ng-show="editForm.tripCount.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.tripCount.$error.min" translate-value-min="0">
+                    This field should be at least 0.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.tripCount.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_likeItemsCount">Like Items Count</label>
+            <input type="number" class="form-control" name="likeItemsCount" id="field_likeItemsCount"
+                    ng-model="vm.profile.likeItemsCount"
+                    min="0"/>
+            <div ng-show="editForm.likeItemsCount.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.likeItemsCount.$error.min" translate-value-min="0">
+                    This field should be at least 0.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.likeItemsCount.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_userId">User Id</label>
+            <input type="number" class="form-control" name="userId" id="field_userId"
+                    ng-model="vm.profile.userId"
+                    required/>
+            <div ng-show="editForm.userId.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.userId.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.userId.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_username">Username</label>
+            <input type="text" class="form-control" name="username" id="field_username"
+                    ng-model="vm.profile.username"
+                    required/>
+            <div ng-show="editForm.username.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.username.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_urlImage">Url Image</label>
+            <input type="text" class="form-control" name="urlImage" id="field_urlImage"
+                    ng-model="vm.profile.urlImage"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_urlImageThumb">Url Image Thumb</label>
+            <input type="text" class="form-control" name="urlImageThumb" id="field_urlImageThumb"
+                    ng-model="vm.profile.urlImageThumb"
+                    />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

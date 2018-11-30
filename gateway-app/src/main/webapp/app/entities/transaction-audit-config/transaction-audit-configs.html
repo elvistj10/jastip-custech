@@ -1,0 +1,58 @@
+<div>
+    <h2>Transaction Audit Configs</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="transaction-audit-config.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Transaction Audit Config
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span>ID</span></th>
+                    <th><span>Entity Name</span></th>
+                    <th><span>Active Status</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="transactionAuditConfig in vm.transactionAuditConfigs track by transactionAuditConfig.id">
+                    <td><a ui-sref="transaction-audit-config-detail({id:transactionAuditConfig.id})">{{transactionAuditConfig.id}}</a></td>
+                    <td>{{transactionAuditConfig.entityName}}</td>
+                    <td>{{transactionAuditConfig.activeStatus}}</td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="transaction-audit-config-detail({id:transactionAuditConfig.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="transaction-audit-config.edit({id:transactionAuditConfig.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="transaction-audit-config.delete({id:transactionAuditConfig.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

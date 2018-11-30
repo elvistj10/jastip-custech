@@ -1,0 +1,70 @@
+<div>
+    <h2>Wallet Transactions</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="wallet-transaction.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Wallet Transaction
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="transactionDateTime"><span>Transaction Date Time</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="transactionType"><span>Transaction Type</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="nominal"><span>Nominal</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="postingId"><span>Posting Id</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="offeringId"><span>Offering Id</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="withdrawalId"><span>Withdrawal Id</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="wallet.id"><span>Wallet</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
+                <tr ng-repeat="walletTransaction in vm.walletTransactions track by walletTransaction.id">
+                    <td><a ui-sref="wallet-transaction-detail({id:walletTransaction.id})">{{walletTransaction.id}}</a></td>
+                    <td>{{walletTransaction.transactionDateTime | date:'medium'}}</td>
+                    <td>{{walletTransaction.transactionType}}</td>
+                    <td>{{walletTransaction.nominal}}</td>
+                    <td>{{walletTransaction.postingId}}</td>
+                    <td>{{walletTransaction.offeringId}}</td>
+                    <td>{{walletTransaction.withdrawalId}}</td>
+                    <td>
+                        <a ui-sref="wallet-detail({id:walletTransaction.wallet.id})">{{walletTransaction.wallet.id}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="wallet-transaction-detail({id:walletTransaction.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="wallet-transaction.edit({id:walletTransaction.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="wallet-transaction.delete({id:walletTransaction.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

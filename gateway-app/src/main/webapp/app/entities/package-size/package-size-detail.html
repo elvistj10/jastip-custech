@@ -1,0 +1,40 @@
+
+<div>
+    <h2><span>Package Size</span> {{vm.packageSize.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Package Size Name</span></dt>
+        <dd>
+            <span>{{vm.packageSize.packageSizeName}}</span>
+        </dd>
+        <dt><span>Package Size Desciption</span></dt>
+        <dd>
+            <span>{{vm.packageSize.packageSizeDesciption}}</span>
+        </dd>
+        <dt><span>Package Size Icon</span></dt>
+        <dd>
+            <div ng-if="vm.packageSize.packageSizeIcon">
+                <a ng-click="vm.openFile(vm.packageSize.packageSizeIconContentType, vm.packageSize.packageSizeIcon)">
+                    <img data-ng-src="{{'data:' + vm.packageSize.packageSizeIconContentType + ';base64,' + vm.packageSize.packageSizeIcon}}" style="max-width: 100%;" alt="packageSize image"/>
+                </a>
+                {{vm.packageSize.packageSizeIconContentType}}, {{vm.byteSize(vm.packageSize.packageSizeIcon)}}
+            </div>
+        </dd>
+        <dt><span>Package Size Icon Url</span></dt>
+        <dd>
+            <span>{{vm.packageSize.packageSizeIconUrl}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="package-size-detail.edit({id:vm.packageSize.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

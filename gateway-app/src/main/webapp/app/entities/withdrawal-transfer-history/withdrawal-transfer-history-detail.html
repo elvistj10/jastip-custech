@@ -1,0 +1,35 @@
+
+<div>
+    <h2><span>Withdrawal Transfer History</span> {{vm.withdrawalTransferHistory.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Withdrawal Id</span></dt>
+        <dd>
+            <span>{{vm.withdrawalTransferHistory.withdrawalId}}</span>
+        </dd>
+        <dt><span>Nominal</span></dt>
+        <dd>
+            <span>{{vm.withdrawalTransferHistory.nominal}}</span>
+        </dd>
+        <dt><span>Dest Bank Name</span></dt>
+        <dd>
+            <span>{{vm.withdrawalTransferHistory.destBankName}}</span>
+        </dd>
+        <dt><span>Dest Bank Account</span></dt>
+        <dd>
+            <span>{{vm.withdrawalTransferHistory.destBankAccount}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="withdrawal-transfer-history-detail.edit({id:vm.withdrawalTransferHistory.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

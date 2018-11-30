@@ -1,0 +1,36 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "itemSubCategory",
+            "otherEntityName": "itemSubCategory",
+            "otherEntityRelationshipName": "itemCategory"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "itemCategoryName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "itemCategoryIcon",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        },
+        {
+            "fieldName": "itemCategoryIconUrl",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20181114105102",
+    "entityTableName": "item_category",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "microserviceName": "MasterApp"
+}

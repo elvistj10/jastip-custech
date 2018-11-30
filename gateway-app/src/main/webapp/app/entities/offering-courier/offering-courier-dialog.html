@@ -1,0 +1,124 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myOfferingCourierLabel">Create or edit a Offering Courier</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.offeringCourier.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.offeringCourier.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_courierReceiptNo">Courier Receipt No</label>
+            <input type="text" class="form-control" name="courierReceiptNo" id="field_courierReceiptNo"
+                    ng-model="vm.offeringCourier.courierReceiptNo"
+                    required/>
+            <div ng-show="editForm.courierReceiptNo.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.courierReceiptNo.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setCourierReceiptImg($file, vm.offeringCourier)" ngf-pattern="'image/*'">
+            <label class="control-label" for="field_courierReceiptImg">Courier Receipt Img</label>
+            <div>
+                <img data-ng-src="{{'data:' + vm.offeringCourier.courierReceiptImgContentType + ';base64,' + vm.offeringCourier.courierReceiptImg}}" style="max-height: 100px;" ng-if="vm.offeringCourier.courierReceiptImg" alt="offeringCourier image"/>
+                <div ng-if="vm.offeringCourier.courierReceiptImg" class="help-block clearfix">
+                    <span class="pull-left">{{vm.offeringCourier.courierReceiptImgContentType}}, {{vm.byteSize(vm.offeringCourier.courierReceiptImg)}}</span>
+                    <button type="button" ng-click="vm.offeringCourier.courierReceiptImg=null;vm.offeringCourier.courierReceiptImgContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="button" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setCourierReceiptImg($file, vm.offeringCourier)" accept="image/*">
+                    Add image
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="courierReceiptImg" id="field_courierReceiptImg"
+                    ng-model="vm.offeringCourier.courierReceiptImg"
+                    />
+            <input type="hidden" class="form-control" name="courierReceiptImgContentType" id="field_courierReceiptImgContentType"
+                    ng-model="vm.offeringCourier.courierReceiptImgContentType" />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_courierReceiptImgUrl">Courier Receipt Img Url</label>
+            <input type="text" class="form-control" name="courierReceiptImgUrl" id="field_courierReceiptImgUrl"
+                    ng-model="vm.offeringCourier.courierReceiptImgUrl"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_courierReceiptImgThumbUrl">Courier Receipt Img Thumb Url</label>
+            <input type="text" class="form-control" name="courierReceiptImgThumbUrl" id="field_courierReceiptImgThumbUrl"
+                    ng-model="vm.offeringCourier.courierReceiptImgThumbUrl"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_courierSendDate">Courier Send Date</label>
+                <div class="input-group">
+                    <input id="field_courierSendDate" type="text" class="form-control" name="courierSendDate" datetime-picker="{{dateformat}}" ng-model="vm.offeringCourier.courierSendDate" is-open="vm.datePickerOpenStatus.courierSendDate"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('courierSendDate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_courierDeliveryDay">Courier Delivery Day</label>
+            <input type="number" class="form-control" name="courierDeliveryDay" id="field_courierDeliveryDay"
+                    ng-model="vm.offeringCourier.courierDeliveryDay"
+                    min="0"/>
+            <div ng-show="editForm.courierDeliveryDay.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.courierDeliveryDay.$error.min" translate-value-min="0">
+                    This field should be at least 0.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.courierDeliveryDay.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_courierEstDeliveredDate">Courier Est Delivered Date</label>
+                <div class="input-group">
+                    <input id="field_courierEstDeliveredDate" type="text" class="form-control" name="courierEstDeliveredDate" datetime-picker="{{dateformat}}" ng-model="vm.offeringCourier.courierEstDeliveredDate" is-open="vm.datePickerOpenStatus.courierEstDeliveredDate"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('courierEstDeliveredDate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_confirmReceivedDateTime">Confirm Received Date Time</label>
+                <div class="input-group">
+                    <input id="field_confirmReceivedDateTime" type="text" class="form-control" name="confirmReceivedDateTime" datetime-picker="{{dateformat}}" ng-model="vm.offeringCourier.confirmReceivedDateTime" is-open="vm.datePickerOpenStatus.confirmReceivedDateTime"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('confirmReceivedDateTime')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+
+        <div class="form-group">
+            <label for="field_offering">Offering</label>
+            <select class="form-control" id="field_offering" name="offering" ng-model="vm.offeringCourier.offering" ng-options="offering as offering.id for offering in vm.offerings | orderBy:'id' track by offering.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

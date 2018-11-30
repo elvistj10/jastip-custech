@@ -1,0 +1,120 @@
+entity Profile {
+	name String required minlength(3), 
+    status ProfileStatus,
+    activeDate Instant,
+    image ImageBlob,
+    imageUrl String, 
+    imageThumbUrl String,
+    email String required,
+    facebookAccount String,
+    googleAccount String, 
+    phoneNumber String,
+    countryId Long,
+    countryName String, 
+    cityId Long,
+    cityName String,
+    averageRating Double min(0), 
+    fiveStarCount Integer min(0), 
+    fourStarCount Integer min(0),
+    threeStarCount Integer min(0),
+    twoStarCount Integer min(0),
+    oneStarCount Integer min(0),
+    followerCount Integer min(0),
+    followingCount Integer min(0), 
+    requestCount Integer min(0), 
+    offersCount Integer min(0),
+    preOrderCount Integer min(0), 
+    tripCount Integer min(0),
+    likeItemsCount Integer min(0),
+    userId Long, 
+    userName String
+}
+
+entity Address {
+	name String required minlength(3), 
+    countryId Long required,
+    countryName String required,
+    proviceId Long, 
+    provinceName String, 
+    cityId Long, 
+    cityName String, 
+    postalCode String required, 
+    address String required minlength (10), 
+    phoneNumber String, 
+    mobilePhoneNumber String, 
+    defaultAddress Boolean
+}
+
+entity BlockedByList{
+	blokerProfileId Long required, 
+    blockDate Instant required,
+    blocked Boolean
+}
+
+entity BlockList{
+	blockedProfileId Long required,
+	blockDate Instant required,
+    block Boolean
+}
+
+entity CreditCard{
+    ccNumber String required,
+    cvc String required,
+    expireMon Instant required,
+    expireYear Instant required,
+	defaulltCreditCard Boolean
+}
+
+entity BankAccount{
+    accountNumber String required,
+    bankId	Long,
+    bankName String required,
+    branchName String required,
+    accountName String required,
+    defaultBankAccount Boolean
+}
+
+entity FollowingList{
+    followingProfileId Long required,
+    followingDate Instant,
+    status Boolean
+}
+
+entity FollowerList{
+    followerProfileId Long required,
+    followedDate Instant,
+    status Boolean
+}
+
+entity Feedback {
+	feedbackerId Long required, 
+	postingId Long required,
+    offeringId Long required, 
+    rating Integer required,
+    message String required,
+    feedbackDateTime Instant
+}
+
+entity FeedbackResponse{
+	message String required,
+    responseDateTime Instant
+}
+
+enum ProfileStatus{
+	NEW, ACTIVE, DISABLED
+}
+
+relationship OneToOne{
+    Feedback{response} to FeedbackResponse{feedback}
+}
+
+relationship OneToMany{
+	Profile{address} to Address{profile},
+	Profile{bankAccount} to BankAccount{profile},
+	Profile{creditCard} to CreditCard{profile},
+	Profile{followingList} to FollowingList{profile},
+    Profile{followerList} to FollowerList{profile},
+    Profile{blockList} to BlockList{profile},
+    Profile{blockByList} to BlockedByList{profile},
+    Profile{feedback} to Feedback{profile}
+}

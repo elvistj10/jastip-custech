@@ -1,0 +1,63 @@
+<div>
+    <h2>M Categories</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="m-category.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new M Category
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span>ID</span></th>
+                    <th><span>Category Name</span></th>
+                    <th><span>Category Icon</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="mCategory in vm.mCategories track by mCategory.id">
+                    <td><a ui-sref="m-category-detail({id:mCategory.id})">{{mCategory.id}}</a></td>
+                    <td>{{mCategory.categoryName}}</td>
+                    <td>
+                        <a ng-if="mCategory.categoryIcon" ng-click="vm.openFile(mCategory.categoryIconContentType, mCategory.categoryIcon)">
+                            <img data-ng-src="{{'data:' + mCategory.categoryIconContentType + ';base64,' + mCategory.categoryIcon}}" style="max-height: 30px;" alt="mCategory image"/>
+                        </a>
+                        <span ng-if="mCategory.categoryIcon">{{mCategory.categoryIconContentType}}, {{vm.byteSize(mCategory.categoryIcon)}}</span>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="m-category-detail({id:mCategory.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="m-category.edit({id:mCategory.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="m-category.delete({id:mCategory.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

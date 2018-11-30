@@ -1,0 +1,80 @@
+<div>
+    <h2>Countries</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="country.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Country
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="countryName"><span>Country Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="image"><span>Image</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="imageUrl"><span>Image Url</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="imageThumbUrl"><span>Image Thumb Url</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="imageFlag"><span>Image Flag</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="imageFlagUrl"><span>Image Flag Url</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="imageFlagThumbUrl"><span>Image Flag Thumb Url</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="countryCode"><span>Country Code</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
+                <tr ng-repeat="country in vm.countries track by country.id">
+                    <td><a ui-sref="country-detail({id:country.id})">{{country.id}}</a></td>
+                    <td>{{country.countryName}}</td>
+                    <td>
+                        <a ng-if="country.image" ng-click="vm.openFile(country.imageContentType, country.image)">
+                            <img data-ng-src="{{'data:' + country.imageContentType + ';base64,' + country.image}}" style="max-height: 30px;" alt="country image"/>
+                        </a>
+                        <span ng-if="country.image">{{country.imageContentType}}, {{vm.byteSize(country.image)}}</span>
+                    </td>
+                    <td>{{country.imageUrl}}</td>
+                    <td>{{country.imageThumbUrl}}</td>
+                    <td>
+                        <a ng-if="country.imageFlag" ng-click="vm.openFile(country.imageFlagContentType, country.imageFlag)">
+                            <img data-ng-src="{{'data:' + country.imageFlagContentType + ';base64,' + country.imageFlag}}" style="max-height: 30px;" alt="country image"/>
+                        </a>
+                        <span ng-if="country.imageFlag">{{country.imageFlagContentType}}, {{vm.byteSize(country.imageFlag)}}</span>
+                    </td>
+                    <td>{{country.imageFlagUrl}}</td>
+                    <td>{{country.imageFlagThumbUrl}}</td>
+                    <td>{{country.countryCode}}</td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="country-detail({id:country.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="country.edit({id:country.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="country.delete({id:country.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

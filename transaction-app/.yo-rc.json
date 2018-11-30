@@ -1,0 +1,33 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.cus.jastip.transaction"
+    },
+    "jhipsterVersion": "4.14.0",
+    "baseName": "TransactionApp",
+    "packageName": "com.cus.jastip.transaction",
+    "packageFolder": "com/cus/jastip/transaction",
+    "serverPort": "8681",
+    "authenticationType": "uaa",
+    "uaaBaseName": "UaaApp",
+    "cacheProvider": "no",
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "mysql",
+    "searchEngine": "elasticsearch",
+    "messageBroker": false,
+    "serviceDiscoveryType": "eureka",
+    "buildTool": "maven",
+    "enableSocialSignIn": false,
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "f0d9146c4e70dd657c1893a901e141db83a7ac8c",
+    "enableTranslation": false,
+    "applicationType": "microservice",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "clientPackageManager": "yarn",
+    "skipClient": true,
+    "skipUserManagement": true
+  }
+}

@@ -1,0 +1,110 @@
+<div>
+    <h2>Offerings</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="offering.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Offering
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="actorId"><span>Actor Id</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="actorType"><span>Actor Type</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="status"><span>Status</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="returnDate"><span>Return Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="sentDate"><span>Sent Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="sentFromCountryId"><span>Sent From Country Id</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="sentFromCountryName"><span>Sent From Country Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="sentFromCityId"><span>Sent From City Id</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="sentFromCityName"><span>Sent From City Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="offeringDate"><span>Offering Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="timezone"><span>Timezone</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="offeringExpiredDate"><span>Offering Expired Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="quantity"><span>Quantity</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="priceItem"><span>Price Item</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="serviceFee"><span>Service Fee</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="jastipFee"><span>Jastip Fee</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="totalFee"><span>Total Fee</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="tripId"><span>Trip Id</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="tripCityName"><span>Trip City Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="tripCountryName"><span>Trip Country Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="tripStartDate"><span>Trip Start Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="tripEndDate"><span>Trip End Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="actorCityFromName"><span>Actor City From Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="shoppingDate"><span>Shopping Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="deliveryDate"><span>Delivery Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="notes"><span>Notes</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="posting.id"><span>Posting</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
+                <tr ng-repeat="offering in vm.offerings track by offering.id">
+                    <td><a ui-sref="offering-detail({id:offering.id})">{{offering.id}}</a></td>
+                    <td>{{offering.actorId}}</td>
+                    <td>{{offering.actorType}}</td>
+                    <td>{{offering.status}}</td>
+                    <td>{{offering.returnDate | date:'medium'}}</td>
+                    <td>{{offering.sentDate | date:'medium'}}</td>
+                    <td>{{offering.sentFromCountryId}}</td>
+                    <td>{{offering.sentFromCountryName}}</td>
+                    <td>{{offering.sentFromCityId}}</td>
+                    <td>{{offering.sentFromCityName}}</td>
+                    <td>{{offering.offeringDate | date:'medium'}}</td>
+                    <td>{{offering.timezone}}</td>
+                    <td>{{offering.offeringExpiredDate | date:'medium'}}</td>
+                    <td>{{offering.quantity}}</td>
+                    <td>{{offering.priceItem}}</td>
+                    <td>{{offering.serviceFee}}</td>
+                    <td>{{offering.jastipFee}}</td>
+                    <td>{{offering.totalFee}}</td>
+                    <td>{{offering.tripId}}</td>
+                    <td>{{offering.tripCityName}}</td>
+                    <td>{{offering.tripCountryName}}</td>
+                    <td>{{offering.tripStartDate | date:'medium'}}</td>
+                    <td>{{offering.tripEndDate | date:'medium'}}</td>
+                    <td>{{offering.actorCityFromName}}</td>
+                    <td>{{offering.shoppingDate | date:'medium'}}</td>
+                    <td>{{offering.deliveryDate | date:'medium'}}</td>
+                    <td>{{offering.notes}}</td>
+                    <td>
+                        <a ui-sref="posting-detail({id:offering.posting.id})">{{offering.posting.id}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="offering-detail({id:offering.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="offering.edit({id:offering.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="offering.delete({id:offering.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

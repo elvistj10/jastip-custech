@@ -1,0 +1,70 @@
+<div>
+    <h2>Service Fees</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="service-fee.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Service Fee
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="percentageFee"><span>Percentage Fee</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="fixNominalFee"><span>Fix Nominal Fee</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="minimumNominalFee"><span>Minimum Nominal Fee</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="minimumNominalPrice"><span>Minimum Nominal Price</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="maximumNominalPrice"><span>Maximum Nominal Price</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="startDateTime"><span>Start Date Time</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="endDateTime"><span>End Date Time</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="activeStatus"><span>Active Status</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
+                <tr ng-repeat="serviceFee in vm.serviceFees track by serviceFee.id">
+                    <td><a ui-sref="service-fee-detail({id:serviceFee.id})">{{serviceFee.id}}</a></td>
+                    <td>{{serviceFee.percentageFee}}</td>
+                    <td>{{serviceFee.fixNominalFee}}</td>
+                    <td>{{serviceFee.minimumNominalFee}}</td>
+                    <td>{{serviceFee.minimumNominalPrice}}</td>
+                    <td>{{serviceFee.maximumNominalPrice}}</td>
+                    <td>{{serviceFee.startDateTime | date:'medium'}}</td>
+                    <td>{{serviceFee.endDateTime | date:'medium'}}</td>
+                    <td>{{serviceFee.activeStatus}}</td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="service-fee-detail({id:serviceFee.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="service-fee.edit({id:serviceFee.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="service-fee.delete({id:serviceFee.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

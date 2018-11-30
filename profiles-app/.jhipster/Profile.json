@@ -1,0 +1,247 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "address",
+            "otherEntityName": "address",
+            "otherEntityRelationshipName": "profile"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "bankAccount",
+            "otherEntityName": "bankAccount",
+            "otherEntityRelationshipName": "profile"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "creditCard",
+            "otherEntityName": "creditCard",
+            "otherEntityRelationshipName": "profile"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "followingList",
+            "otherEntityName": "followingList",
+            "otherEntityRelationshipName": "profile"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "followerList",
+            "otherEntityName": "followerList",
+            "otherEntityRelationshipName": "profile"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "blockList",
+            "otherEntityName": "blockList",
+            "otherEntityRelationshipName": "profile"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "blockByList",
+            "otherEntityName": "blockedByList",
+            "otherEntityRelationshipName": "profile"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "feedback",
+            "otherEntityName": "feedback",
+            "otherEntityRelationshipName": "profile"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength"
+            ],
+            "fieldValidateRulesMinlength": 3
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "ProfileStatus",
+            "fieldValues": "NEW,ACTIVE,DISABLED"
+        },
+        {
+            "fieldName": "activeDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "image",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        },
+        {
+            "fieldName": "email",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "facebookAccount",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "googleAccount",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "phoneNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "countryId",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "countryName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "cityId",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "cityName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "averageRating",
+            "fieldType": "Double",
+            "fieldValidateRules": [
+                "min"
+            ],
+            "fieldValidateRulesMin": 0
+        },
+        {
+            "fieldName": "fiveStarCount",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "min"
+            ],
+            "fieldValidateRulesMin": 0
+        },
+        {
+            "fieldName": "fourStarCount",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "min"
+            ],
+            "fieldValidateRulesMin": 0
+        },
+        {
+            "fieldName": "threeStarCount",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "min"
+            ],
+            "fieldValidateRulesMin": 0
+        },
+        {
+            "fieldName": "twoStarCount",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "min"
+            ],
+            "fieldValidateRulesMin": 0
+        },
+        {
+            "fieldName": "oneStarCount",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "min"
+            ],
+            "fieldValidateRulesMin": 0
+        },
+        {
+            "fieldName": "followerCount",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "min"
+            ],
+            "fieldValidateRulesMin": 0
+        },
+        {
+            "fieldName": "followingCount",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "min"
+            ],
+            "fieldValidateRulesMin": 0
+        },
+        {
+            "fieldName": "requestCount",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "min"
+            ],
+            "fieldValidateRulesMin": 0
+        },
+        {
+            "fieldName": "offersCount",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "min"
+            ],
+            "fieldValidateRulesMin": 0
+        },
+        {
+            "fieldName": "preOrderCount",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "min"
+            ],
+            "fieldValidateRulesMin": 0
+        },
+        {
+            "fieldName": "tripCount",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "min"
+            ],
+            "fieldValidateRulesMin": 0
+        },
+        {
+            "fieldName": "likeItemsCount",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "min"
+            ],
+            "fieldValidateRulesMin": 0
+        },
+        {
+            "fieldName": "userId",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "username",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "urlImage",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "urlImageThumb",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20181016075058",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "profile",
+    "jpaMetamodelFiltering": false,
+    "pagination": "infinite-scroll",
+    "microserviceName": "ProfilesApp",
+    "searchEngine": "elasticsearch"
+}

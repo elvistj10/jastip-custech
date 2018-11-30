@@ -1,0 +1,145 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myAddressLabel">Create or edit a Address</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.address.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.address.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="vm.address.name"
+                    required ng-minlength="3"/>
+            <div ng-show="editForm.name.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.name.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.name.$error.minlength" translate-value-min="3">
+                    This field is required to be at least 3 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_countryId">Country Id</label>
+            <input type="number" class="form-control" name="countryId" id="field_countryId"
+                    ng-model="vm.address.countryId"
+                    required/>
+            <div ng-show="editForm.countryId.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.countryId.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.countryId.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_countryName">Country Name</label>
+            <input type="text" class="form-control" name="countryName" id="field_countryName"
+                    ng-model="vm.address.countryName"
+                    required/>
+            <div ng-show="editForm.countryName.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.countryName.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_proviceId">Provice Id</label>
+            <input type="number" class="form-control" name="proviceId" id="field_proviceId"
+                    ng-model="vm.address.proviceId"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_provinceName">Province Name</label>
+            <input type="text" class="form-control" name="provinceName" id="field_provinceName"
+                    ng-model="vm.address.provinceName"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_cityId">City Id</label>
+            <input type="number" class="form-control" name="cityId" id="field_cityId"
+                    ng-model="vm.address.cityId"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_cityName">City Name</label>
+            <input type="text" class="form-control" name="cityName" id="field_cityName"
+                    ng-model="vm.address.cityName"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_postalCode">Postal Code</label>
+            <input type="text" class="form-control" name="postalCode" id="field_postalCode"
+                    ng-model="vm.address.postalCode"
+                    required/>
+            <div ng-show="editForm.postalCode.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.postalCode.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_address">Address</label>
+            <input type="text" class="form-control" name="address" id="field_address"
+                    ng-model="vm.address.address"
+                    required ng-minlength="10"/>
+            <div ng-show="editForm.address.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.address.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.address.$error.minlength" translate-value-min="10">
+                    This field is required to be at least 10 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_phoneNumber">Phone Number</label>
+            <input type="text" class="form-control" name="phoneNumber" id="field_phoneNumber"
+                    ng-model="vm.address.phoneNumber"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_mobilePhoneNumber">Mobile Phone Number</label>
+            <input type="text" class="form-control" name="mobilePhoneNumber" id="field_mobilePhoneNumber"
+                    ng-model="vm.address.mobilePhoneNumber"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_defaultAddress">Default Address</label>
+                <input type="checkbox" name="defaultAddress" id="field_defaultAddress"
+                          ng-model="vm.address.defaultAddress"/>
+        </div>
+
+        <div class="form-group">
+            <label for="field_profile">Profile</label>
+            <select class="form-control" id="field_profile" name="profile" ng-model="vm.address.profile" ng-options="profile as profile.id for profile in vm.profiles track by profile.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

@@ -1,0 +1,35 @@
+
+<div>
+    <h2><span>Withdrawal Transfer List</span> {{vm.withdrawalTransferList.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Withdrawal Id</span></dt>
+        <dd>
+            <span>{{vm.withdrawalTransferList.withdrawalId}}</span>
+        </dd>
+        <dt><span>Nominal</span></dt>
+        <dd>
+            <span>{{vm.withdrawalTransferList.nominal}}</span>
+        </dd>
+        <dt><span>Dest Bank Name</span></dt>
+        <dd>
+            <span>{{vm.withdrawalTransferList.destBankName}}</span>
+        </dd>
+        <dt><span>Dest Bank Account</span></dt>
+        <dd>
+            <span>{{vm.withdrawalTransferList.destBankAccount}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="withdrawal-transfer-list-detail.edit({id:vm.withdrawalTransferList.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,66 @@
+
+<div>
+    <h2><span>M Country</span> {{vm.mCountry.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Country Name</span></dt>
+        <dd>
+            <span>{{vm.mCountry.countryName}}</span>
+        </dd>
+        <dt><span>Image</span></dt>
+        <dd>
+            <div ng-if="vm.mCountry.image">
+                <a ng-click="vm.openFile(vm.mCountry.imageContentType, vm.mCountry.image)">
+                    <img data-ng-src="{{'data:' + vm.mCountry.imageContentType + ';base64,' + vm.mCountry.image}}" style="max-width: 100%;" alt="mCountry image"/>
+                </a>
+                {{vm.mCountry.imageContentType}}, {{vm.byteSize(vm.mCountry.image)}}
+            </div>
+        </dd>
+        <dt><span>Image Url</span></dt>
+        <dd>
+            <span>{{vm.mCountry.imageUrl}}</span>
+        </dd>
+        <dt><span>Image Thumb Url</span></dt>
+        <dd>
+            <div ng-if="vm.mCountry.imageThumbUrl">
+                <a ng-click="vm.openFile(vm.mCountry.imageThumbUrlContentType, vm.mCountry.imageThumbUrl)">
+                    <img data-ng-src="{{'data:' + vm.mCountry.imageThumbUrlContentType + ';base64,' + vm.mCountry.imageThumbUrl}}" style="max-width: 100%;" alt="mCountry image"/>
+                </a>
+                {{vm.mCountry.imageThumbUrlContentType}}, {{vm.byteSize(vm.mCountry.imageThumbUrl)}}
+            </div>
+        </dd>
+        <dt><span>Image Flag</span></dt>
+        <dd>
+            <div ng-if="vm.mCountry.imageFlag">
+                <a ng-click="vm.openFile(vm.mCountry.imageFlagContentType, vm.mCountry.imageFlag)">
+                    <img data-ng-src="{{'data:' + vm.mCountry.imageFlagContentType + ';base64,' + vm.mCountry.imageFlag}}" style="max-width: 100%;" alt="mCountry image"/>
+                </a>
+                {{vm.mCountry.imageFlagContentType}}, {{vm.byteSize(vm.mCountry.imageFlag)}}
+            </div>
+        </dd>
+        <dt><span>Image Flag Url</span></dt>
+        <dd>
+            <span>{{vm.mCountry.imageFlagUrl}}</span>
+        </dd>
+        <dt><span>Image Flag Thumb Url</span></dt>
+        <dd>
+            <span>{{vm.mCountry.imageFlagThumbUrl}}</span>
+        </dd>
+        <dt><span>Country Code</span></dt>
+        <dd>
+            <span>{{vm.mCountry.countryCode}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="m-country-detail.edit({id:vm.mCountry.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,56 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "bannerTitle",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "bannerType",
+            "fieldType": "BannerType",
+            "fieldValues": "INTERNAL,EXTERNAL"
+        },
+        {
+            "fieldName": "postingType",
+            "fieldType": "PostingType",
+            "fieldValues": "TRAVELLER,REQUESTOR"
+        },
+        {
+            "fieldName": "image",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        },
+        {
+            "fieldName": "imageUrl",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "startDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "endDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "notes",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "query",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20181125190044",
+    "entityTableName": "banner",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "microserviceName": "BannerApp"
+}

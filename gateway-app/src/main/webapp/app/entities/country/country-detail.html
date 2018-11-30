@@ -1,0 +1,61 @@
+
+<div>
+    <h2><span>Country</span> {{vm.country.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Country Name</span></dt>
+        <dd>
+            <span>{{vm.country.countryName}}</span>
+        </dd>
+        <dt><span>Image</span></dt>
+        <dd>
+            <div ng-if="vm.country.image">
+                <a ng-click="vm.openFile(vm.country.imageContentType, vm.country.image)">
+                    <img data-ng-src="{{'data:' + vm.country.imageContentType + ';base64,' + vm.country.image}}" style="max-width: 100%;" alt="country image"/>
+                </a>
+                {{vm.country.imageContentType}}, {{vm.byteSize(vm.country.image)}}
+            </div>
+        </dd>
+        <dt><span>Image Url</span></dt>
+        <dd>
+            <span>{{vm.country.imageUrl}}</span>
+        </dd>
+        <dt><span>Image Thumb Url</span></dt>
+        <dd>
+            <span>{{vm.country.imageThumbUrl}}</span>
+        </dd>
+        <dt><span>Image Flag</span></dt>
+        <dd>
+            <div ng-if="vm.country.imageFlag">
+                <a ng-click="vm.openFile(vm.country.imageFlagContentType, vm.country.imageFlag)">
+                    <img data-ng-src="{{'data:' + vm.country.imageFlagContentType + ';base64,' + vm.country.imageFlag}}" style="max-width: 100%;" alt="country image"/>
+                </a>
+                {{vm.country.imageFlagContentType}}, {{vm.byteSize(vm.country.imageFlag)}}
+            </div>
+        </dd>
+        <dt><span>Image Flag Url</span></dt>
+        <dd>
+            <span>{{vm.country.imageFlagUrl}}</span>
+        </dd>
+        <dt><span>Image Flag Thumb Url</span></dt>
+        <dd>
+            <span>{{vm.country.imageFlagThumbUrl}}</span>
+        </dd>
+        <dt><span>Country Code</span></dt>
+        <dd>
+            <span>{{vm.country.countryCode}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="country-detail.edit({id:vm.country.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

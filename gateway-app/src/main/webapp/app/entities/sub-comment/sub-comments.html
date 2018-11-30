@@ -1,0 +1,64 @@
+<div>
+    <h2>Sub Comments</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="sub-comment.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Sub Comment
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="profileId"><span>Profile Id</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="subComment"><span>Sub Comment</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="subCommentDateTime"><span>Sub Comment Date Time</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="comment.id"><span>Comment</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
+                <tr ng-repeat="subComment in vm.subComments track by subComment.id">
+                    <td><a ui-sref="sub-comment-detail({id:subComment.id})">{{subComment.id}}</a></td>
+                    <td>{{subComment.profileId}}</td>
+                    <td>{{subComment.subComment}}</td>
+                    <td>{{subComment.subCommentDateTime | date:'medium'}}</td>
+                    <td>
+                        <a ui-sref="comment-detail({id:subComment.comment.id})">{{subComment.comment.id}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="sub-comment-detail({id:subComment.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="sub-comment.edit({id:subComment.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="sub-comment.delete({id:subComment.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

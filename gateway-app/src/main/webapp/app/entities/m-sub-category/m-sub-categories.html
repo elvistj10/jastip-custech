@@ -1,0 +1,67 @@
+<div>
+    <h2>M Sub Categories</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="m-sub-category.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new M Sub Category
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span>ID</span></th>
+                    <th><span>Sub Category Name</span></th>
+                    <th><span>Sub Category Icon</span></th>
+                    <th><span>M Category</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="mSubCategory in vm.mSubCategories track by mSubCategory.id">
+                    <td><a ui-sref="m-sub-category-detail({id:mSubCategory.id})">{{mSubCategory.id}}</a></td>
+                    <td>{{mSubCategory.subCategoryName}}</td>
+                    <td>
+                        <a ng-if="mSubCategory.subCategoryIcon" ng-click="vm.openFile(mSubCategory.subCategoryIconContentType, mSubCategory.subCategoryIcon)">
+                            <img data-ng-src="{{'data:' + mSubCategory.subCategoryIconContentType + ';base64,' + mSubCategory.subCategoryIcon}}" style="max-height: 30px;" alt="mSubCategory image"/>
+                        </a>
+                        <span ng-if="mSubCategory.subCategoryIcon">{{mSubCategory.subCategoryIconContentType}}, {{vm.byteSize(mSubCategory.subCategoryIcon)}}</span>
+                    </td>
+                    <td>
+                        <a ui-sref="m-category-detail({id:mSubCategory.mCategory.id})">{{mSubCategory.mCategory.categoryName}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="m-sub-category-detail({id:mSubCategory.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="m-sub-category.edit({id:mSubCategory.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="m-sub-category.delete({id:mSubCategory.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

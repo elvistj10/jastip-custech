@@ -1,0 +1,48 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "percentageFee",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "fixNominalFee",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "minimumNominalFee",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "minimumNominalPrice",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "maximumNominalPrice",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "startDateTime",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "endDateTime",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "activeStatus",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20181114105058",
+    "entityTableName": "service_fee",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "microserviceName": "MasterApp"
+}

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <property name="now" value="now()" dbms="h2"/>
+
+    <property name="now" value="now()" dbms="mysql"/>
+    <property name="autoIncrement" value="true"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
+
+    <!--
+        Added the entity Profile.
+    -->
+    <changeSet id="20181016075058-1" author="jhipster">
+        <createTable tableName="profile">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="status" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="active_date" type="timestamp">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="image" type="longblob">
+                <constraints nullable="true" />
+            </column>
+            <column name="image_content_type" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="email" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="facebook_account" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="google_account" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="phone_number" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="country_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="country_name" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="city_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="city_name" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="average_rating" type="double">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="five_star_count" type="integer">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="four_star_count" type="integer">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="three_star_count" type="integer">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="two_star_count" type="integer">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="one_star_count" type="integer">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="follower_count" type="integer">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="following_count" type="integer">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="request_count" type="integer">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="offers_count" type="integer">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="pre_order_count" type="integer">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="trip_count" type="integer">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="like_items_count" type="integer">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="user_id" type="bigint">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="username" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="url_image" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="url_image_thumb" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
+        </createTable>
+        <dropDefaultValue tableName="profile" columnName="active_date" columnDataType="datetime"/>
+        
+    </changeSet>
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
+</databaseChangeLog>

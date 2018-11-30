@@ -1,0 +1,74 @@
+<div>
+    <h2>Feedbacks</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="feedback.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Feedback
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="feedbackerId"><span>Feedbacker Id</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="postingId"><span>Posting Id</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="offeringId"><span>Offering Id</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="rating"><span>Rating</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="message"><span>Message</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="feedbackDateTime"><span>Feedback Date Time</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="response.id"><span>Response</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="profile.id"><span>Profile</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
+                <tr ng-repeat="feedback in vm.feedbacks track by feedback.id">
+                    <td><a ui-sref="feedback-detail({id:feedback.id})">{{feedback.id}}</a></td>
+                    <td>{{feedback.feedbackerId}}</td>
+                    <td>{{feedback.postingId}}</td>
+                    <td>{{feedback.offeringId}}</td>
+                    <td>{{feedback.rating}}</td>
+                    <td>{{feedback.message}}</td>
+                    <td>{{feedback.feedbackDateTime | date:'medium'}}</td>
+                    <td>
+                        <a ui-sref="feedback-response-detail({id:feedback.response.id})">{{feedback.response.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="profile-detail({id:feedback.profile.id})">{{feedback.profile.id}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="feedback-detail({id:feedback.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="feedback.edit({id:feedback.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="feedback.delete({id:feedback.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

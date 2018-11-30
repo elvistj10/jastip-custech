@@ -1,0 +1,33 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.cus.jastip.payment"
+    },
+    "jhipsterVersion": "4.14.0",
+    "baseName": "PaymentApp",
+    "packageName": "com.cus.jastip.payment",
+    "packageFolder": "com/cus/jastip/payment",
+    "serverPort": "8302",
+    "authenticationType": "uaa",
+    "uaaBaseName": "UaaApp",
+    "cacheProvider": "no",
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "mysql",
+    "searchEngine": "elasticsearch",
+    "messageBroker": false,
+    "serviceDiscoveryType": "eureka",
+    "buildTool": "maven",
+    "enableSocialSignIn": false,
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "57a6a66eded9063f4e01980d8d9a9fb265f784fb",
+    "enableTranslation": false,
+    "applicationType": "microservice",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "clientPackageManager": "yarn",
+    "skipClient": true,
+    "skipUserManagement": true
+  }
+}

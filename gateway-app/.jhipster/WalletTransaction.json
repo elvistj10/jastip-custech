@@ -1,0 +1,45 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "wallet",
+            "otherEntityName": "wallet",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "transactionDateTime",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "transactionType",
+            "fieldType": "WalletTransactionType",
+            "fieldValues": "WITHDRAWAL,INCOME,PAYMENT"
+        },
+        {
+            "fieldName": "nominal",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "postingId",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "offeringId",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "withdrawalId",
+            "fieldType": "Long"
+        }
+    ],
+    "changelogDate": "20181126100152",
+    "entityTableName": "wallet_transaction",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "microserviceName": "WalletApp"
+}

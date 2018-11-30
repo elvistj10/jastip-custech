@@ -1,0 +1,60 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myMCategoryLabel">Create or edit a M Category</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.mCategory.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.mCategory.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_categoryName">Category Name</label>
+            <input type="text" class="form-control" name="categoryName" id="field_categoryName"
+                    ng-model="vm.mCategory.categoryName"
+                    required/>
+            <div ng-show="editForm.categoryName.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.categoryName.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setCategoryIcon($file, vm.mCategory)" ngf-pattern="'image/*'">
+            <label class="control-label" for="field_categoryIcon">Category Icon</label>
+            <div>
+                <img data-ng-src="{{'data:' + vm.mCategory.categoryIconContentType + ';base64,' + vm.mCategory.categoryIcon}}" style="max-height: 100px;" ng-if="vm.mCategory.categoryIcon" alt="mCategory image"/>
+                <div ng-if="vm.mCategory.categoryIcon" class="help-block clearfix">
+                    <span class="pull-left">{{vm.mCategory.categoryIconContentType}}, {{vm.byteSize(vm.mCategory.categoryIcon)}}</span>
+                    <button type="button" ng-click="vm.mCategory.categoryIcon=null;vm.mCategory.categoryIconContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="button" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setCategoryIcon($file, vm.mCategory)" accept="image/*">
+                    Add image
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="categoryIcon" id="field_categoryIcon"
+                    ng-model="vm.mCategory.categoryIcon"
+                    />
+            <input type="hidden" class="form-control" name="categoryIconContentType" id="field_categoryIconContentType"
+                    ng-model="vm.mCategory.categoryIconContentType" />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

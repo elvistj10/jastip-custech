@@ -1,0 +1,60 @@
+
+<div>
+    <h2><span>Offering Courier</span> {{vm.offeringCourier.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Courier Receipt No</span></dt>
+        <dd>
+            <span>{{vm.offeringCourier.courierReceiptNo}}</span>
+        </dd>
+        <dt><span>Courier Receipt Img</span></dt>
+        <dd>
+            <div ng-if="vm.offeringCourier.courierReceiptImg">
+                <a ng-click="vm.openFile(vm.offeringCourier.courierReceiptImgContentType, vm.offeringCourier.courierReceiptImg)">
+                    <img data-ng-src="{{'data:' + vm.offeringCourier.courierReceiptImgContentType + ';base64,' + vm.offeringCourier.courierReceiptImg}}" style="max-width: 100%;" alt="offeringCourier image"/>
+                </a>
+                {{vm.offeringCourier.courierReceiptImgContentType}}, {{vm.byteSize(vm.offeringCourier.courierReceiptImg)}}
+            </div>
+        </dd>
+        <dt><span>Courier Receipt Img Url</span></dt>
+        <dd>
+            <span>{{vm.offeringCourier.courierReceiptImgUrl}}</span>
+        </dd>
+        <dt><span>Courier Receipt Img Thumb Url</span></dt>
+        <dd>
+            <span>{{vm.offeringCourier.courierReceiptImgThumbUrl}}</span>
+        </dd>
+        <dt><span>Courier Send Date</span></dt>
+        <dd>
+            <span>{{vm.offeringCourier.courierSendDate | date:'medium'}}</span>
+        </dd>
+        <dt><span>Courier Delivery Day</span></dt>
+        <dd>
+            <span>{{vm.offeringCourier.courierDeliveryDay}}</span>
+        </dd>
+        <dt><span>Courier Est Delivered Date</span></dt>
+        <dd>
+            <span>{{vm.offeringCourier.courierEstDeliveredDate | date:'medium'}}</span>
+        </dd>
+        <dt><span>Confirm Received Date Time</span></dt>
+        <dd>
+            <span>{{vm.offeringCourier.confirmReceivedDateTime | date:'medium'}}</span>
+        </dd>
+        <dt><span>Offering</span></dt>
+        <dd>
+            <a ui-sref="offering-detail({id:vm.offeringCourier.offering.id})">{{vm.offeringCourier.offering.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="offering-courier-detail.edit({id:vm.offeringCourier.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

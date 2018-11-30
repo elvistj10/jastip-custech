@@ -1,0 +1,99 @@
+<div>
+    <h2>Addresses</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="address.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span class="hidden-xs-down" >
+                        Create new Address
+                    </span>
+                </button>
+            </div>
+            <div class="col-xs-8 no-padding-right">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group pull-right" >
+                        <input type="text" class="form-control" ng-model="vm.searchQuery" id="searchQuery" placeholder="Query">
+                        <span  class="input-group-btn width-min" >
+                            <button class="btn btn-info" ng-click="vm.search(vm.searchQuery)">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                        <span class="input-group-btn width-min" ng-if="vm.currentSearch">
+                            <button class="btn btn-info" ng-click="vm.clear()">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="name"><span>Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="countryId"><span>Country Id</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="countryName"><span>Country Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="proviceId"><span>Provice Id</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="provinceName"><span>Province Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cityId"><span>City Id</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cityName"><span>City Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="postalCode"><span>Postal Code</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="address"><span>Address</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="phoneNumber"><span>Phone Number</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="mobilePhoneNumber"><span>Mobile Phone Number</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="defaultAddress"><span>Default Address</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="profile.id"><span>Profile</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
+                <tr ng-repeat="address in vm.addresses track by address.id">
+                    <td><a ui-sref="address-detail({id:address.id})">{{address.id}}</a></td>
+                    <td>{{address.name}}</td>
+                    <td>{{address.countryId}}</td>
+                    <td>{{address.countryName}}</td>
+                    <td>{{address.proviceId}}</td>
+                    <td>{{address.provinceName}}</td>
+                    <td>{{address.cityId}}</td>
+                    <td>{{address.cityName}}</td>
+                    <td>{{address.postalCode}}</td>
+                    <td>{{address.address}}</td>
+                    <td>{{address.phoneNumber}}</td>
+                    <td>{{address.mobilePhoneNumber}}</td>
+                    <td>{{address.defaultAddress}}</td>
+                    <td>
+                        <a ui-sref="profile-detail({id:address.profile.id})">{{address.profile.id}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="address-detail({id:address.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="address.edit({id:address.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="address.delete({id:address.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

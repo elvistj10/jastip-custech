@@ -1,0 +1,43 @@
+
+<div>
+    <h2><span>Payment Transfer History</span> {{vm.paymentTransferHistory.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Posting Id</span></dt>
+        <dd>
+            <span>{{vm.paymentTransferHistory.postingId}}</span>
+        </dd>
+        <dt><span>Offering Id</span></dt>
+        <dd>
+            <span>{{vm.paymentTransferHistory.offeringId}}</span>
+        </dd>
+        <dt><span>Nominal</span></dt>
+        <dd>
+            <span>{{vm.paymentTransferHistory.nominal}}</span>
+        </dd>
+        <dt><span>Payment Confirm Date Time</span></dt>
+        <dd>
+            <span>{{vm.paymentTransferHistory.paymentConfirmDateTime | date:'medium'}}</span>
+        </dd>
+        <dt><span>Check Date Time</span></dt>
+        <dd>
+            <span>{{vm.paymentTransferHistory.checkDateTime | date:'medium'}}</span>
+        </dd>
+        <dt><span>Expired Date Time</span></dt>
+        <dd>
+            <span>{{vm.paymentTransferHistory.expiredDateTime | date:'medium'}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="payment-transfer-history-detail.edit({id:vm.paymentTransferHistory.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

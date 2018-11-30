@@ -1,0 +1,78 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myPackageSizeLabel">Create or edit a Package Size</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.packageSize.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.packageSize.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_packageSizeName">Package Size Name</label>
+            <input type="text" class="form-control" name="packageSizeName" id="field_packageSizeName"
+                    ng-model="vm.packageSize.packageSizeName"
+                    required/>
+            <div ng-show="editForm.packageSizeName.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.packageSizeName.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_packageSizeDesciption">Package Size Desciption</label>
+            <input type="text" class="form-control" name="packageSizeDesciption" id="field_packageSizeDesciption"
+                    ng-model="vm.packageSize.packageSizeDesciption"
+                    required/>
+            <div ng-show="editForm.packageSizeDesciption.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.packageSizeDesciption.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setPackageSizeIcon($file, vm.packageSize)" ngf-pattern="'image/*'">
+            <label class="control-label" for="field_packageSizeIcon">Package Size Icon</label>
+            <div>
+                <img data-ng-src="{{'data:' + vm.packageSize.packageSizeIconContentType + ';base64,' + vm.packageSize.packageSizeIcon}}" style="max-height: 100px;" ng-if="vm.packageSize.packageSizeIcon" alt="packageSize image"/>
+                <div ng-if="vm.packageSize.packageSizeIcon" class="help-block clearfix">
+                    <span class="pull-left">{{vm.packageSize.packageSizeIconContentType}}, {{vm.byteSize(vm.packageSize.packageSizeIcon)}}</span>
+                    <button type="button" ng-click="vm.packageSize.packageSizeIcon=null;vm.packageSize.packageSizeIconContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="button" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setPackageSizeIcon($file, vm.packageSize)" accept="image/*">
+                    Add image
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="packageSizeIcon" id="field_packageSizeIcon"
+                    ng-model="vm.packageSize.packageSizeIcon"
+                    />
+            <input type="hidden" class="form-control" name="packageSizeIconContentType" id="field_packageSizeIconContentType"
+                    ng-model="vm.packageSize.packageSizeIconContentType" />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_packageSizeIconUrl">Package Size Icon Url</label>
+            <input type="text" class="form-control" name="packageSizeIconUrl" id="field_packageSizeIconUrl"
+                    ng-model="vm.packageSize.packageSizeIconUrl"
+                    />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

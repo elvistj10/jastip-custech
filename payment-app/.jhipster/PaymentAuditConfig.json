@@ -1,0 +1,25 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "entityName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "activeStatus",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20181121033709",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "payment_audit_config",
+    "jpaMetamodelFiltering": false,
+    "pagination": "infinite-scroll",
+    "microserviceName": "PaymentApp",
+    "searchEngine": "elasticsearch"
+}

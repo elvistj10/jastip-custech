@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181114105054_added_entity_Country.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181114105055_added_entity_Province.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181114105056_added_entity_City.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181114105057_added_entity_PostalCode.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181114105058_added_entity_ServiceFee.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181114105059_added_entity_PackageSize.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181114105100_added_entity_Bank.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181114105101_added_entity_BusinessAccount.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181114105102_added_entity_ItemCategory.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181114105103_added_entity_ItemSubCategory.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181114105104_added_entity_Updates.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181114105105_added_entity_MasterAuditConfig.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181114105106_added_entity_MasterAudit.xml" relativeToChangelogFile="false"/>
+    <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20181114105055_added_entity_constraints_Province.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181114105056_added_entity_constraints_City.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181114105057_added_entity_constraints_PostalCode.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181114105103_added_entity_constraints_ItemSubCategory.xml" relativeToChangelogFile="false"/>
+    <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
+</databaseChangeLog>

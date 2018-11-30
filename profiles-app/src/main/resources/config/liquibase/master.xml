@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181016075058_added_entity_Profile.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181016075059_added_entity_Address.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181016075100_added_entity_BlockedByList.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181016075101_added_entity_BlockList.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181016075102_added_entity_CreditCard.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181016075103_added_entity_BankAccount.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181016075104_added_entity_FollowingList.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181016075105_added_entity_FollowerList.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181016075106_added_entity_Feedback.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181016075107_added_entity_FeedbackResponse.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181121041834_added_entity_ProfilesAudit.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181121041928_added_entity_ProfilesAuditConfig.xml" relativeToChangelogFile="false"/>
+    <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20181016075059_added_entity_constraints_Address.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181016075100_added_entity_constraints_BlockedByList.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181016075101_added_entity_constraints_BlockList.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181016075102_added_entity_constraints_CreditCard.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181016075103_added_entity_constraints_BankAccount.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181016075104_added_entity_constraints_FollowingList.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181016075105_added_entity_constraints_FollowerList.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181016075106_added_entity_constraints_Feedback.xml" relativeToChangelogFile="false"/>
+    <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
+</databaseChangeLog>

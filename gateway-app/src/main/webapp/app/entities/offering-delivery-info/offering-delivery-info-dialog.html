@@ -1,0 +1,62 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myOfferingDeliveryInfoLabel">Create or edit a Offering Delivery Info</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.offeringDeliveryInfo.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.offeringDeliveryInfo.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_recipientName">Recipient Name</label>
+            <input type="text" class="form-control" name="recipientName" id="field_recipientName"
+                    ng-model="vm.offeringDeliveryInfo.recipientName"
+                    required/>
+            <div ng-show="editForm.recipientName.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.recipientName.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_phoneNumber">Phone Number</label>
+            <input type="text" class="form-control" name="phoneNumber" id="field_phoneNumber"
+                    ng-model="vm.offeringDeliveryInfo.phoneNumber"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_deliveryAddress">Delivery Address</label>
+            <input type="text" class="form-control" name="deliveryAddress" id="field_deliveryAddress"
+                    ng-model="vm.offeringDeliveryInfo.deliveryAddress"
+                    required/>
+            <div ng-show="editForm.deliveryAddress.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.deliveryAddress.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="field_offering">Offering</label>
+            <select class="form-control" id="field_offering" name="offering" ng-model="vm.offeringDeliveryInfo.offering" ng-options="offering as offering.id for offering in vm.offerings | orderBy:'id' track by offering.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

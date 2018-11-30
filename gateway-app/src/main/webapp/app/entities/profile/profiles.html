@@ -1,0 +1,132 @@
+<div>
+    <h2>Profiles</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="profile.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span class="hidden-xs-down" >
+                        Create new Profile
+                    </span>
+                </button>
+            </div>
+            <div class="col-xs-8 no-padding-right">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group pull-right" >
+                        <input type="text" class="form-control" ng-model="vm.searchQuery" id="searchQuery" placeholder="Query">
+                        <span  class="input-group-btn width-min" >
+                            <button class="btn btn-info" ng-click="vm.search(vm.searchQuery)">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                        <span class="input-group-btn width-min" ng-if="vm.currentSearch">
+                            <button class="btn btn-info" ng-click="vm.clear()">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="name"><span>Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="status"><span>Status</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="activeDate"><span>Active Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="image"><span>Image</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="email"><span>Email</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="facebookAccount"><span>Facebook Account</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="googleAccount"><span>Google Account</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="phoneNumber"><span>Phone Number</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="countryId"><span>Country Id</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="countryName"><span>Country Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cityId"><span>City Id</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cityName"><span>City Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="averageRating"><span>Average Rating</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="fiveStarCount"><span>Five Star Count</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="fourStarCount"><span>Four Star Count</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="threeStarCount"><span>Three Star Count</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="twoStarCount"><span>Two Star Count</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="oneStarCount"><span>One Star Count</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="followerCount"><span>Follower Count</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="followingCount"><span>Following Count</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="requestCount"><span>Request Count</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="offersCount"><span>Offers Count</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="preOrderCount"><span>Pre Order Count</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="tripCount"><span>Trip Count</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="likeItemsCount"><span>Like Items Count</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="userId"><span>User Id</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="username"><span>Username</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="urlImage"><span>Url Image</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="urlImageThumb"><span>Url Image Thumb</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
+                <tr ng-repeat="profile in vm.profiles track by profile.id">
+                    <td><a ui-sref="profile-detail({id:profile.id})">{{profile.id}}</a></td>
+                    <td>{{profile.name}}</td>
+                    <td>{{profile.status}}</td>
+                    <td>{{profile.activeDate | date:'medium'}}</td>
+                    <td>
+                        <a ng-if="profile.image" ng-click="vm.openFile(profile.imageContentType, profile.image)">open</a>
+                        <span ng-if="profile.image">{{profile.imageContentType}}, {{vm.byteSize(profile.image)}}</span>
+                    </td>
+                    <td>{{profile.email}}</td>
+                    <td>{{profile.facebookAccount}}</td>
+                    <td>{{profile.googleAccount}}</td>
+                    <td>{{profile.phoneNumber}}</td>
+                    <td>{{profile.countryId}}</td>
+                    <td>{{profile.countryName}}</td>
+                    <td>{{profile.cityId}}</td>
+                    <td>{{profile.cityName}}</td>
+                    <td>{{profile.averageRating}}</td>
+                    <td>{{profile.fiveStarCount}}</td>
+                    <td>{{profile.fourStarCount}}</td>
+                    <td>{{profile.threeStarCount}}</td>
+                    <td>{{profile.twoStarCount}}</td>
+                    <td>{{profile.oneStarCount}}</td>
+                    <td>{{profile.followerCount}}</td>
+                    <td>{{profile.followingCount}}</td>
+                    <td>{{profile.requestCount}}</td>
+                    <td>{{profile.offersCount}}</td>
+                    <td>{{profile.preOrderCount}}</td>
+                    <td>{{profile.tripCount}}</td>
+                    <td>{{profile.likeItemsCount}}</td>
+                    <td>{{profile.userId}}</td>
+                    <td>{{profile.username}}</td>
+                    <td>{{profile.urlImage}}</td>
+                    <td>{{profile.urlImageThumb}}</td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="profile-detail({id:profile.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="profile.edit({id:profile.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="profile.delete({id:profile.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

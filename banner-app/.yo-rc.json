@@ -1,0 +1,33 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.cus.jastip.banner"
+    },
+    "jhipsterVersion": "4.14.0",
+    "baseName": "BannerApp",
+    "packageName": "com.cus.jastip.banner",
+    "packageFolder": "com/cus/jastip/banner",
+    "serverPort": "8546",
+    "authenticationType": "uaa",
+    "uaaBaseName": "UaaApp",
+    "cacheProvider": "no",
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "mysql",
+    "searchEngine": "elasticsearch",
+    "messageBroker": false,
+    "serviceDiscoveryType": "eureka",
+    "buildTool": "maven",
+    "enableSocialSignIn": false,
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "b026300be1a859d9621dee685eb406eb7b1409f5",
+    "enableTranslation": false,
+    "applicationType": "microservice",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "clientPackageManager": "yarn",
+    "skipClient": true,
+    "skipUserManagement": true
+  }
+}

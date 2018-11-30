@@ -1,0 +1,64 @@
+
+<div>
+    <h2><span>Banner</span> {{vm.banner.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Banner Title</span></dt>
+        <dd>
+            <span>{{vm.banner.bannerTitle}}</span>
+        </dd>
+        <dt><span>Banner Type</span></dt>
+        <dd>
+            <span>{{vm.banner.bannerType}}</span>
+        </dd>
+        <dt><span>Posting Type</span></dt>
+        <dd>
+            <span>{{vm.banner.postingType}}</span>
+        </dd>
+        <dt><span>Image</span></dt>
+        <dd>
+            <div ng-if="vm.banner.image">
+                <a ng-click="vm.openFile(vm.banner.imageContentType, vm.banner.image)">
+                    <img data-ng-src="{{'data:' + vm.banner.imageContentType + ';base64,' + vm.banner.image}}" style="max-width: 100%;" alt="banner image"/>
+                </a>
+                {{vm.banner.imageContentType}}, {{vm.byteSize(vm.banner.image)}}
+            </div>
+        </dd>
+        <dt><span>Image Url</span></dt>
+        <dd>
+            <span>{{vm.banner.imageUrl}}</span>
+        </dd>
+        <dt><span>Start Date</span></dt>
+        <dd>
+            <span>{{vm.banner.startDate | date:'medium'}}</span>
+        </dd>
+        <dt><span>End Date</span></dt>
+        <dd>
+            <span>{{vm.banner.endDate | date:'medium'}}</span>
+        </dd>
+        <dt><span>Description</span></dt>
+        <dd>
+            <span>{{vm.banner.description}}</span>
+        </dd>
+        <dt><span>Notes</span></dt>
+        <dd>
+            <span>{{vm.banner.notes}}</span>
+        </dd>
+        <dt><span>Query</span></dt>
+        <dd>
+            <span>{{vm.banner.query}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="banner-detail.edit({id:vm.banner.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

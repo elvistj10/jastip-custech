@@ -1,0 +1,45 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "ownerId",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "requestDateTime",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "nominal",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "destBankName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "destBankAccount",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "WithdrawalStatus",
+            "fieldValues": "IN_PROCESS,SUCCESS,FAIL"
+        },
+        {
+            "fieldName": "completedDateTime",
+            "fieldType": "Instant"
+        }
+    ],
+    "changelogDate": "20181126100153",
+    "entityTableName": "wallet_withdrawal",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "microserviceName": "WalletApp"
+}

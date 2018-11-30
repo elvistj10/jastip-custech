@@ -1,0 +1,38 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "profile",
+            "otherEntityName": "profile",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "blokerProfileId",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "blockDate",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "blocked",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20181016075100",
+    "entityTableName": "blocked_by_list",
+    "dto": "no",
+    "pagination": "no",
+    "service": "infinite-scroll",
+    "jpaMetamodelFiltering": false,
+    "microserviceName": "ProfilesApp"
+}

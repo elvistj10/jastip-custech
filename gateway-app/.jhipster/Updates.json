@@ -1,0 +1,33 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "entityName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "entityId",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "updateType",
+            "fieldType": "UpdateType",
+            "fieldValues": "CREATE,UPDATE,DELETE"
+        },
+        {
+            "fieldName": "updateDateTime",
+            "fieldType": "Instant"
+        }
+    ],
+    "changelogDate": "20181114105104",
+    "entityTableName": "updates",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "microserviceName": "MasterApp"
+}

@@ -1,0 +1,72 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myMPackageSizeLabel">Create or edit a M Package Size</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.mPackageSize.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.mPackageSize.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_packageSizeName">Package Size Name</label>
+            <input type="text" class="form-control" name="packageSizeName" id="field_packageSizeName"
+                    ng-model="vm.mPackageSize.packageSizeName"
+                    required/>
+            <div ng-show="editForm.packageSizeName.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.packageSizeName.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_packageSizeDesciption">Package Size Desciption</label>
+            <input type="text" class="form-control" name="packageSizeDesciption" id="field_packageSizeDesciption"
+                    ng-model="vm.mPackageSize.packageSizeDesciption"
+                    required/>
+            <div ng-show="editForm.packageSizeDesciption.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.packageSizeDesciption.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setPackageSizeThumb($file, vm.mPackageSize)" ngf-pattern="'image/*'">
+            <label class="control-label" for="field_packageSizeThumb">Package Size Thumb</label>
+            <div>
+                <img data-ng-src="{{'data:' + vm.mPackageSize.packageSizeThumbContentType + ';base64,' + vm.mPackageSize.packageSizeThumb}}" style="max-height: 100px;" ng-if="vm.mPackageSize.packageSizeThumb" alt="mPackageSize image"/>
+                <div ng-if="vm.mPackageSize.packageSizeThumb" class="help-block clearfix">
+                    <span class="pull-left">{{vm.mPackageSize.packageSizeThumbContentType}}, {{vm.byteSize(vm.mPackageSize.packageSizeThumb)}}</span>
+                    <button type="button" ng-click="vm.mPackageSize.packageSizeThumb=null;vm.mPackageSize.packageSizeThumbContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="button" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setPackageSizeThumb($file, vm.mPackageSize)" accept="image/*">
+                    Add image
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="packageSizeThumb" id="field_packageSizeThumb"
+                    ng-model="vm.mPackageSize.packageSizeThumb"
+                    />
+            <input type="hidden" class="form-control" name="packageSizeThumbContentType" id="field_packageSizeThumbContentType"
+                    ng-model="vm.mPackageSize.packageSizeThumbContentType" />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

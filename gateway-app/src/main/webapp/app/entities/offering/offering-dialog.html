@@ -1,0 +1,333 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myOfferingLabel">Create or edit a Offering</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.offering.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.offering.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_actorId">Actor Id</label>
+            <input type="number" class="form-control" name="actorId" id="field_actorId"
+                    ng-model="vm.offering.actorId"
+                    required/>
+            <div ng-show="editForm.actorId.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.actorId.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.actorId.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_actorType">Actor Type</label>
+            <select class="form-control" name="actorType" ng-model="vm.offering.actorType" id="field_actorType">
+                <option value="BUYER">BUYER</option>
+                <option value="SELLER">SELLER</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_status">Status</label>
+            <select class="form-control" name="status" ng-model="vm.offering.status" id="field_status">
+                <option value="NEW">NEW</option>
+                <option value="ACCEPTED">ACCEPTED</option>
+                <option value="REJECTED">REJECTED</option>
+                <option value="PAID">PAID</option>
+                <option value="CANCELED">CANCELED</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_returnDate">Return Date</label>
+                <div class="input-group">
+                    <input id="field_returnDate" type="text" class="form-control" name="returnDate" datetime-picker="{{dateformat}}" ng-model="vm.offering.returnDate" is-open="vm.datePickerOpenStatus.returnDate"
+                    required/>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('returnDate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+            <div ng-show="editForm.returnDate.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.returnDate.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.returnDate.$error.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_sentDate">Sent Date</label>
+                <div class="input-group">
+                    <input id="field_sentDate" type="text" class="form-control" name="sentDate" datetime-picker="{{dateformat}}" ng-model="vm.offering.sentDate" is-open="vm.datePickerOpenStatus.sentDate"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('sentDate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_sentFromCountryId">Sent From Country Id</label>
+            <input type="number" class="form-control" name="sentFromCountryId" id="field_sentFromCountryId"
+                    ng-model="vm.offering.sentFromCountryId"
+                    required/>
+            <div ng-show="editForm.sentFromCountryId.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.sentFromCountryId.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.sentFromCountryId.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_sentFromCountryName">Sent From Country Name</label>
+            <input type="text" class="form-control" name="sentFromCountryName" id="field_sentFromCountryName"
+                    ng-model="vm.offering.sentFromCountryName"
+                    required/>
+            <div ng-show="editForm.sentFromCountryName.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.sentFromCountryName.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_sentFromCityId">Sent From City Id</label>
+            <input type="number" class="form-control" name="sentFromCityId" id="field_sentFromCityId"
+                    ng-model="vm.offering.sentFromCityId"
+                    required/>
+            <div ng-show="editForm.sentFromCityId.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.sentFromCityId.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.sentFromCityId.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_sentFromCityName">Sent From City Name</label>
+            <input type="text" class="form-control" name="sentFromCityName" id="field_sentFromCityName"
+                    ng-model="vm.offering.sentFromCityName"
+                    required/>
+            <div ng-show="editForm.sentFromCityName.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.sentFromCityName.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_offeringDate">Offering Date</label>
+                <div class="input-group">
+                    <input id="field_offeringDate" type="text" class="form-control" name="offeringDate" datetime-picker="{{dateformat}}" ng-model="vm.offering.offeringDate" is-open="vm.datePickerOpenStatus.offeringDate"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('offeringDate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_timezone" uib-tooltip="generated by system">Timezone</label>
+            <input type="text" class="form-control" name="timezone" id="field_timezone"
+                    ng-model="vm.offering.timezone"
+                    required/>
+            <div ng-show="editForm.timezone.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.timezone.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_offeringExpiredDate">Offering Expired Date</label>
+                <div class="input-group">
+                    <input id="field_offeringExpiredDate" type="text" class="form-control" name="offeringExpiredDate" datetime-picker="{{dateformat}}" ng-model="vm.offering.offeringExpiredDate" is-open="vm.datePickerOpenStatus.offeringExpiredDate"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('offeringExpiredDate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_quantity">Quantity</label>
+            <input type="number" class="form-control" name="quantity" id="field_quantity"
+                    ng-model="vm.offering.quantity"
+                    min="1"/>
+            <div ng-show="editForm.quantity.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.quantity.$error.min" translate-value-min="1">
+                    This field should be at least 1.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.quantity.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_priceItem">Price Item</label>
+            <input type="number" class="form-control" name="priceItem" id="field_priceItem"
+                    ng-model="vm.offering.priceItem"
+                    min="0"/>
+            <div ng-show="editForm.priceItem.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.priceItem.$error.min" translate-value-min="0">
+                    This field should be at least 0.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.priceItem.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_serviceFee">Service Fee</label>
+            <input type="number" class="form-control" name="serviceFee" id="field_serviceFee"
+                    ng-model="vm.offering.serviceFee"
+                    min="0"/>
+            <div ng-show="editForm.serviceFee.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.serviceFee.$error.min" translate-value-min="0">
+                    This field should be at least 0.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.serviceFee.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_jastipFee">Jastip Fee</label>
+            <input type="number" class="form-control" name="jastipFee" id="field_jastipFee"
+                    ng-model="vm.offering.jastipFee"
+                    min="0"/>
+            <div ng-show="editForm.jastipFee.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.jastipFee.$error.min" translate-value-min="0">
+                    This field should be at least 0.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.jastipFee.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_totalFee">Total Fee</label>
+            <input type="number" class="form-control" name="totalFee" id="field_totalFee"
+                    ng-model="vm.offering.totalFee"
+                    min="0"/>
+            <div ng-show="editForm.totalFee.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.totalFee.$error.min" translate-value-min="0">
+                    This field should be at least 0.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.totalFee.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_tripId">Trip Id</label>
+            <input type="number" class="form-control" name="tripId" id="field_tripId"
+                    ng-model="vm.offering.tripId"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_tripCityName">Trip City Name</label>
+            <input type="text" class="form-control" name="tripCityName" id="field_tripCityName"
+                    ng-model="vm.offering.tripCityName"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_tripCountryName">Trip Country Name</label>
+            <input type="text" class="form-control" name="tripCountryName" id="field_tripCountryName"
+                    ng-model="vm.offering.tripCountryName"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_tripStartDate">Trip Start Date</label>
+                <div class="input-group">
+                    <input id="field_tripStartDate" type="text" class="form-control" name="tripStartDate" datetime-picker="{{dateformat}}" ng-model="vm.offering.tripStartDate" is-open="vm.datePickerOpenStatus.tripStartDate"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('tripStartDate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_tripEndDate">Trip End Date</label>
+                <div class="input-group">
+                    <input id="field_tripEndDate" type="text" class="form-control" name="tripEndDate" datetime-picker="{{dateformat}}" ng-model="vm.offering.tripEndDate" is-open="vm.datePickerOpenStatus.tripEndDate"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('tripEndDate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_actorCityFromName">Actor City From Name</label>
+            <input type="text" class="form-control" name="actorCityFromName" id="field_actorCityFromName"
+                    ng-model="vm.offering.actorCityFromName"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_shoppingDate">Shopping Date</label>
+                <div class="input-group">
+                    <input id="field_shoppingDate" type="text" class="form-control" name="shoppingDate" datetime-picker="{{dateformat}}" ng-model="vm.offering.shoppingDate" is-open="vm.datePickerOpenStatus.shoppingDate"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('shoppingDate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_deliveryDate">Delivery Date</label>
+                <div class="input-group">
+                    <input id="field_deliveryDate" type="text" class="form-control" name="deliveryDate" datetime-picker="{{dateformat}}" ng-model="vm.offering.deliveryDate" is-open="vm.datePickerOpenStatus.deliveryDate"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('deliveryDate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_notes">Notes</label>
+            <input type="text" class="form-control" name="notes" id="field_notes"
+                    ng-model="vm.offering.notes"
+                    />
+        </div>
+
+        <div class="form-group">
+            <label for="field_posting">Posting</label>
+            <select class="form-control" id="field_posting" name="posting" ng-model="vm.offering.posting" ng-options="posting as posting.id for posting in vm.postings track by posting.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

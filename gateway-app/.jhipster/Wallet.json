@@ -1,0 +1,36 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "walletTransaction",
+            "otherEntityName": "walletTransaction",
+            "otherEntityRelationshipName": "wallet"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "ownerId",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "balance",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "WalletStatus",
+            "fieldValues": "ACTIVE,INACTIVE"
+        }
+    ],
+    "changelogDate": "20181126100151",
+    "entityTableName": "wallet",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "microserviceName": "WalletApp"
+}

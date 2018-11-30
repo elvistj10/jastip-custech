@@ -1,0 +1,32 @@
+
+<div>
+    <h2><span>M Category</span> {{vm.mCategory.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Category Name</span></dt>
+        <dd>
+            <span>{{vm.mCategory.categoryName}}</span>
+        </dd>
+        <dt><span>Category Icon</span></dt>
+        <dd>
+            <div ng-if="vm.mCategory.categoryIcon">
+                <a ng-click="vm.openFile(vm.mCategory.categoryIconContentType, vm.mCategory.categoryIcon)">
+                    <img data-ng-src="{{'data:' + vm.mCategory.categoryIconContentType + ';base64,' + vm.mCategory.categoryIcon}}" style="max-width: 100%;" alt="mCategory image"/>
+                </a>
+                {{vm.mCategory.categoryIconContentType}}, {{vm.byteSize(vm.mCategory.categoryIcon)}}
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="m-category-detail.edit({id:vm.mCategory.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

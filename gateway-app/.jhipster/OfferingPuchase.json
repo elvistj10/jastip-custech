@@ -1,0 +1,39 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "offering",
+            "otherEntityName": "offering",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "offeringPurchase"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "purchased",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "receiptImg",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        },
+        {
+            "fieldName": "receiptImgUrl",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "receiptImgThumbUrl",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20181128032808",
+    "entityTableName": "offering_puchase",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "microserviceName": "TransactionApp"
+}

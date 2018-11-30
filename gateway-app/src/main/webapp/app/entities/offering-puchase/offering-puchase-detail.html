@@ -1,0 +1,44 @@
+
+<div>
+    <h2><span>Offering Puchase</span> {{vm.offeringPuchase.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Purchased</span></dt>
+        <dd>
+            <span>{{vm.offeringPuchase.purchased}}</span>
+        </dd>
+        <dt><span>Receipt Img</span></dt>
+        <dd>
+            <div ng-if="vm.offeringPuchase.receiptImg">
+                <a ng-click="vm.openFile(vm.offeringPuchase.receiptImgContentType, vm.offeringPuchase.receiptImg)">
+                    <img data-ng-src="{{'data:' + vm.offeringPuchase.receiptImgContentType + ';base64,' + vm.offeringPuchase.receiptImg}}" style="max-width: 100%;" alt="offeringPuchase image"/>
+                </a>
+                {{vm.offeringPuchase.receiptImgContentType}}, {{vm.byteSize(vm.offeringPuchase.receiptImg)}}
+            </div>
+        </dd>
+        <dt><span>Receipt Img Url</span></dt>
+        <dd>
+            <span>{{vm.offeringPuchase.receiptImgUrl}}</span>
+        </dd>
+        <dt><span>Receipt Img Thumb Url</span></dt>
+        <dd>
+            <span>{{vm.offeringPuchase.receiptImgThumbUrl}}</span>
+        </dd>
+        <dt><span>Offering</span></dt>
+        <dd>
+            <a ui-sref="offering-detail({id:vm.offeringPuchase.offering.id})">{{vm.offeringPuchase.offering.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="offering-puchase-detail.edit({id:vm.offeringPuchase.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,51 @@
+
+<div>
+    <h2><span>M Service Fee</span> {{vm.mServiceFee.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Percentage Fee</span></dt>
+        <dd>
+            <span>{{vm.mServiceFee.percentageFee}}</span>
+        </dd>
+        <dt><span>Fix Nominal Fee</span></dt>
+        <dd>
+            <span>{{vm.mServiceFee.fixNominalFee}}</span>
+        </dd>
+        <dt><span>Minimum Nominal Fee</span></dt>
+        <dd>
+            <span>{{vm.mServiceFee.minimumNominalFee}}</span>
+        </dd>
+        <dt><span>Minimum Nominal Price</span></dt>
+        <dd>
+            <span>{{vm.mServiceFee.minimumNominalPrice}}</span>
+        </dd>
+        <dt><span>Maximum Nominal Price</span></dt>
+        <dd>
+            <span>{{vm.mServiceFee.maximumNominalPrice}}</span>
+        </dd>
+        <dt><span>Start Date Time</span></dt>
+        <dd>
+            <span>{{vm.mServiceFee.startDateTime | date:'medium'}}</span>
+        </dd>
+        <dt><span>End Date Time</span></dt>
+        <dd>
+            <span>{{vm.mServiceFee.endDateTime | date:'medium'}}</span>
+        </dd>
+        <dt><span>Active Status</span></dt>
+        <dd>
+            <span>{{vm.mServiceFee.activeStatus}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="m-service-fee-detail.edit({id:vm.mServiceFee.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

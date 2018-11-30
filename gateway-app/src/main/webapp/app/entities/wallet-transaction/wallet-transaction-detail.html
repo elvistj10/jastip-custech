@@ -1,0 +1,47 @@
+
+<div>
+    <h2><span>Wallet Transaction</span> {{vm.walletTransaction.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Transaction Date Time</span></dt>
+        <dd>
+            <span>{{vm.walletTransaction.transactionDateTime | date:'medium'}}</span>
+        </dd>
+        <dt><span>Transaction Type</span></dt>
+        <dd>
+            <span>{{vm.walletTransaction.transactionType}}</span>
+        </dd>
+        <dt><span>Nominal</span></dt>
+        <dd>
+            <span>{{vm.walletTransaction.nominal}}</span>
+        </dd>
+        <dt><span>Posting Id</span></dt>
+        <dd>
+            <span>{{vm.walletTransaction.postingId}}</span>
+        </dd>
+        <dt><span>Offering Id</span></dt>
+        <dd>
+            <span>{{vm.walletTransaction.offeringId}}</span>
+        </dd>
+        <dt><span>Withdrawal Id</span></dt>
+        <dd>
+            <span>{{vm.walletTransaction.withdrawalId}}</span>
+        </dd>
+        <dt><span>Wallet</span></dt>
+        <dd>
+            <a ui-sref="wallet-detail({id:vm.walletTransaction.wallet.id})">{{vm.walletTransaction.wallet.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="wallet-transaction-detail.edit({id:vm.walletTransaction.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

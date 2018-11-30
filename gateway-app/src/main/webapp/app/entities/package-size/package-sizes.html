@@ -1,0 +1,67 @@
+<div>
+    <h2>Package Sizes</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="package-size.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Package Size
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="packageSizeName"><span>Package Size Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="packageSizeDesciption"><span>Package Size Desciption</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="packageSizeIcon"><span>Package Size Icon</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="packageSizeIconUrl"><span>Package Size Icon Url</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
+                <tr ng-repeat="packageSize in vm.packageSizes track by packageSize.id">
+                    <td><a ui-sref="package-size-detail({id:packageSize.id})">{{packageSize.id}}</a></td>
+                    <td>{{packageSize.packageSizeName}}</td>
+                    <td>{{packageSize.packageSizeDesciption}}</td>
+                    <td>
+                        <a ng-if="packageSize.packageSizeIcon" ng-click="vm.openFile(packageSize.packageSizeIconContentType, packageSize.packageSizeIcon)">
+                            <img data-ng-src="{{'data:' + packageSize.packageSizeIconContentType + ';base64,' + packageSize.packageSizeIcon}}" style="max-height: 30px;" alt="packageSize image"/>
+                        </a>
+                        <span ng-if="packageSize.packageSizeIcon">{{packageSize.packageSizeIconContentType}}, {{vm.byteSize(packageSize.packageSizeIcon)}}</span>
+                    </td>
+                    <td>{{packageSize.packageSizeIconUrl}}</td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="package-size-detail({id:packageSize.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="package-size.edit({id:packageSize.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="package-size.delete({id:packageSize.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

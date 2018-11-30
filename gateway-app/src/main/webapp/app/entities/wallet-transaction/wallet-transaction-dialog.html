@@ -1,0 +1,74 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myWalletTransactionLabel">Create or edit a Wallet Transaction</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.walletTransaction.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.walletTransaction.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_transactionDateTime">Transaction Date Time</label>
+                <div class="input-group">
+                    <input id="field_transactionDateTime" type="text" class="form-control" name="transactionDateTime" datetime-picker="{{dateformat}}" ng-model="vm.walletTransaction.transactionDateTime" is-open="vm.datePickerOpenStatus.transactionDateTime"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('transactionDateTime')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_transactionType">Transaction Type</label>
+            <select class="form-control" name="transactionType" ng-model="vm.walletTransaction.transactionType" id="field_transactionType">
+                <option value="WITHDRAWAL">WITHDRAWAL</option>
+                <option value="INCOME">INCOME</option>
+                <option value="PAYMENT">PAYMENT</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_nominal">Nominal</label>
+            <input type="number" class="form-control" name="nominal" id="field_nominal"
+                    ng-model="vm.walletTransaction.nominal"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_postingId">Posting Id</label>
+            <input type="number" class="form-control" name="postingId" id="field_postingId"
+                    ng-model="vm.walletTransaction.postingId"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_offeringId">Offering Id</label>
+            <input type="number" class="form-control" name="offeringId" id="field_offeringId"
+                    ng-model="vm.walletTransaction.offeringId"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_withdrawalId">Withdrawal Id</label>
+            <input type="number" class="form-control" name="withdrawalId" id="field_withdrawalId"
+                    ng-model="vm.walletTransaction.withdrawalId"
+                    />
+        </div>
+
+        <div class="form-group">
+            <label for="field_wallet">Wallet</label>
+            <select class="form-control" id="field_wallet" name="wallet" ng-model="vm.walletTransaction.wallet" ng-options="wallet as wallet.id for wallet in vm.wallets track by wallet.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

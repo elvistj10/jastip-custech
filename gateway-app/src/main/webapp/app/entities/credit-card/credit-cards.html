@@ -1,0 +1,85 @@
+<div>
+    <h2>Credit Cards</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="credit-card.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span class="hidden-xs-down" >
+                        Create new Credit Card
+                    </span>
+                </button>
+            </div>
+            <div class="col-xs-8 no-padding-right">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group pull-right" >
+                        <input type="text" class="form-control" ng-model="vm.searchQuery" id="searchQuery" placeholder="Query">
+                        <span  class="input-group-btn width-min" >
+                            <button class="btn btn-info" ng-click="vm.search(vm.searchQuery)">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                        <span class="input-group-btn width-min" ng-if="vm.currentSearch">
+                            <button class="btn btn-info" ng-click="vm.clear()">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="ccNumber"><span>Cc Number</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cvc"><span>Cvc</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="expireMon"><span>Expire Mon</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="expireYear"><span>Expire Year</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="defaultCreditCard"><span>Default Credit Card</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="profile.id"><span>Profile</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
+                <tr ng-repeat="creditCard in vm.creditCards track by creditCard.id">
+                    <td><a ui-sref="credit-card-detail({id:creditCard.id})">{{creditCard.id}}</a></td>
+                    <td>{{creditCard.ccNumber}}</td>
+                    <td>{{creditCard.cvc}}</td>
+                    <td>{{creditCard.expireMon | date:'medium'}}</td>
+                    <td>{{creditCard.expireYear | date:'medium'}}</td>
+                    <td>{{creditCard.defaultCreditCard}}</td>
+                    <td>
+                        <a ui-sref="profile-detail({id:creditCard.profile.id})">{{creditCard.profile.id}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="credit-card-detail({id:creditCard.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="credit-card.edit({id:creditCard.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="credit-card.delete({id:creditCard.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

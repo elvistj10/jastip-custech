@@ -1,0 +1,91 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myMServiceFeeLabel">Create or edit a M Service Fee</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.mServiceFee.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.mServiceFee.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_percentageFee">Percentage Fee</label>
+            <input type="number" class="form-control" name="percentageFee" id="field_percentageFee"
+                    ng-model="vm.mServiceFee.percentageFee"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_fixNominalFee">Fix Nominal Fee</label>
+            <input type="number" class="form-control" name="fixNominalFee" id="field_fixNominalFee"
+                    ng-model="vm.mServiceFee.fixNominalFee"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_minimumNominalFee">Minimum Nominal Fee</label>
+            <input type="number" class="form-control" name="minimumNominalFee" id="field_minimumNominalFee"
+                    ng-model="vm.mServiceFee.minimumNominalFee"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_minimumNominalPrice">Minimum Nominal Price</label>
+            <input type="number" class="form-control" name="minimumNominalPrice" id="field_minimumNominalPrice"
+                    ng-model="vm.mServiceFee.minimumNominalPrice"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_maximumNominalPrice">Maximum Nominal Price</label>
+            <input type="number" class="form-control" name="maximumNominalPrice" id="field_maximumNominalPrice"
+                    ng-model="vm.mServiceFee.maximumNominalPrice"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_startDateTime">Start Date Time</label>
+                <div class="input-group">
+                    <input id="field_startDateTime" type="text" class="form-control" name="startDateTime" datetime-picker="{{dateformat}}" ng-model="vm.mServiceFee.startDateTime" is-open="vm.datePickerOpenStatus.startDateTime"
+                    required/>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('startDateTime')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+            <div ng-show="editForm.startDateTime.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.startDateTime.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.startDateTime.$error.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_endDateTime">End Date Time</label>
+                <div class="input-group">
+                    <input id="field_endDateTime" type="text" class="form-control" name="endDateTime" datetime-picker="{{dateformat}}" ng-model="vm.mServiceFee.endDateTime" is-open="vm.datePickerOpenStatus.endDateTime"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('endDateTime')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_activeStatus">Active Status</label>
+                <input type="checkbox" name="activeStatus" id="field_activeStatus"
+                          ng-model="vm.mServiceFee.activeStatus"/>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

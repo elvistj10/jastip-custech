@@ -1,0 +1,71 @@
+
+<div>
+    <h2><span>Address</span> {{vm.address.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Name</span></dt>
+        <dd>
+            <span>{{vm.address.name}}</span>
+        </dd>
+        <dt><span>Country Id</span></dt>
+        <dd>
+            <span>{{vm.address.countryId}}</span>
+        </dd>
+        <dt><span>Country Name</span></dt>
+        <dd>
+            <span>{{vm.address.countryName}}</span>
+        </dd>
+        <dt><span>Provice Id</span></dt>
+        <dd>
+            <span>{{vm.address.proviceId}}</span>
+        </dd>
+        <dt><span>Province Name</span></dt>
+        <dd>
+            <span>{{vm.address.provinceName}}</span>
+        </dd>
+        <dt><span>City Id</span></dt>
+        <dd>
+            <span>{{vm.address.cityId}}</span>
+        </dd>
+        <dt><span>City Name</span></dt>
+        <dd>
+            <span>{{vm.address.cityName}}</span>
+        </dd>
+        <dt><span>Postal Code</span></dt>
+        <dd>
+            <span>{{vm.address.postalCode}}</span>
+        </dd>
+        <dt><span>Address</span></dt>
+        <dd>
+            <span>{{vm.address.address}}</span>
+        </dd>
+        <dt><span>Phone Number</span></dt>
+        <dd>
+            <span>{{vm.address.phoneNumber}}</span>
+        </dd>
+        <dt><span>Mobile Phone Number</span></dt>
+        <dd>
+            <span>{{vm.address.mobilePhoneNumber}}</span>
+        </dd>
+        <dt><span>Default Address</span></dt>
+        <dd>
+            <span>{{vm.address.defaultAddress}}</span>
+        </dd>
+        <dt><span>Profile</span></dt>
+        <dd>
+            <a ui-sref="profile-detail({id:vm.address.profile.id})">{{vm.address.profile.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="address-detail.edit({id:vm.address.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

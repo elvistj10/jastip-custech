@@ -1,0 +1,76 @@
+<div>
+    <h2>Offering Delivery Services</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="offering-delivery-service.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Offering Delivery Service
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="sentToCountryId"><span>Sent To Country Id</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="sentToCountryName"><span>Sent To Country Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="sentToCityId"><span>Sent To City Id</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="sentToCityName"><span>Sent To City Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="packageSizeId"><span>Package Size Id</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="packageSizeName"><span>Package Size Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="deliveryServiceId"><span>Delivery Service Id</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="deliveryServiceName"><span>Delivery Service Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="deliveryFee"><span>Delivery Fee</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="offering.id"><span>Offering</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
+                <tr ng-repeat="offeringDeliveryService in vm.offeringDeliveryServices track by offeringDeliveryService.id">
+                    <td><a ui-sref="offering-delivery-service-detail({id:offeringDeliveryService.id})">{{offeringDeliveryService.id}}</a></td>
+                    <td>{{offeringDeliveryService.sentToCountryId}}</td>
+                    <td>{{offeringDeliveryService.sentToCountryName}}</td>
+                    <td>{{offeringDeliveryService.sentToCityId}}</td>
+                    <td>{{offeringDeliveryService.sentToCityName}}</td>
+                    <td>{{offeringDeliveryService.packageSizeId}}</td>
+                    <td>{{offeringDeliveryService.packageSizeName}}</td>
+                    <td>{{offeringDeliveryService.deliveryServiceId}}</td>
+                    <td>{{offeringDeliveryService.deliveryServiceName}}</td>
+                    <td>{{offeringDeliveryService.deliveryFee}}</td>
+                    <td>
+                        <a ui-sref="offering-detail({id:offeringDeliveryService.offering.id})">{{offeringDeliveryService.offering.id}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="offering-delivery-service-detail({id:offeringDeliveryService.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="offering-delivery-service.edit({id:offeringDeliveryService.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="offering-delivery-service.delete({id:offeringDeliveryService.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

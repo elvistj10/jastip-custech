@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181126100151_added_entity_Wallet.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181126100152_added_entity_WalletTransaction.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181126100153_added_entity_WalletWithdrawal.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181126100154_added_entity_WithdrawalTransferList.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181126100155_added_entity_WithdrawalTransferHistory.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181126100156_added_entity_WithdrawalTransferFailed.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181126100157_added_entity_WalletAuditConfig.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181126100158_added_entity_WalletAudit.xml" relativeToChangelogFile="false"/>
+    <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20181126100152_added_entity_constraints_WalletTransaction.xml" relativeToChangelogFile="false"/>
+    <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
+</databaseChangeLog>

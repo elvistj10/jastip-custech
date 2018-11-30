@@ -1,0 +1,44 @@
+entity Payment{
+	postingId Long required, 
+    offeringId Long required, 
+    paymentStatus PaymentStatus,
+    paymentMethod PaymentMethod, 
+    nominal Double required min(0), 
+    paymentDateTime Instant required
+}
+
+entity PaymentTransferCheckList{
+	postingId Long required, 
+    offeringId Long required, 
+    nominal Double required min(0), 
+    paymentConfirmDateTime Instant required, 
+    expiredDateTime Instant required
+}
+
+entity PaymentTransferHistory{
+	postingId Long required, 
+    offeringId Long required, 
+    nominal Double required min(0), 
+    paymentConfirmDateTime Instant required,
+    checkDateTime Instant required,
+    expiredDateTime Instant required
+}
+
+entity PaymentTransferUnmatched{
+	postingId Long required, 
+    offeringId Long required, 
+    nominal Double required min(0), 
+    paymentUnmatchedDateTime Instant required,
+    checkDateTime Instant required,
+    expiredDateTime Instant required,
+}
+
+enum PaymentStatus {
+	NEW, CANCEL, CONFIRMED 
+}
+
+enum PaymentMethod{
+	BANK_TRANSFER, WALLET
+}
+
+

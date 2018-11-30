@@ -1,0 +1,70 @@
+<div>
+    <h2>M Service Fees</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="m-service-fee.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new M Service Fee
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span>ID</span></th>
+                    <th><span>Percentage Fee</span></th>
+                    <th><span>Fix Nominal Fee</span></th>
+                    <th><span>Minimum Nominal Fee</span></th>
+                    <th><span>Minimum Nominal Price</span></th>
+                    <th><span>Maximum Nominal Price</span></th>
+                    <th><span>Start Date Time</span></th>
+                    <th><span>End Date Time</span></th>
+                    <th><span>Active Status</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="mServiceFee in vm.mServiceFees track by mServiceFee.id">
+                    <td><a ui-sref="m-service-fee-detail({id:mServiceFee.id})">{{mServiceFee.id}}</a></td>
+                    <td>{{mServiceFee.percentageFee}}</td>
+                    <td>{{mServiceFee.fixNominalFee}}</td>
+                    <td>{{mServiceFee.minimumNominalFee}}</td>
+                    <td>{{mServiceFee.minimumNominalPrice}}</td>
+                    <td>{{mServiceFee.maximumNominalPrice}}</td>
+                    <td>{{mServiceFee.startDateTime | date:'medium'}}</td>
+                    <td>{{mServiceFee.endDateTime | date:'medium'}}</td>
+                    <td>{{mServiceFee.activeStatus}}</td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="m-service-fee-detail({id:mServiceFee.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="m-service-fee.edit({id:mServiceFee.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="m-service-fee.delete({id:mServiceFee.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

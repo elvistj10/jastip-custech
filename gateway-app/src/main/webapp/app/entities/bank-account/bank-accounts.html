@@ -1,0 +1,87 @@
+<div>
+    <h2>Bank Accounts</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="bank-account.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span class="hidden-xs-down" >
+                        Create new Bank Account
+                    </span>
+                </button>
+            </div>
+            <div class="col-xs-8 no-padding-right">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group pull-right" >
+                        <input type="text" class="form-control" ng-model="vm.searchQuery" id="searchQuery" placeholder="Query">
+                        <span  class="input-group-btn width-min" >
+                            <button class="btn btn-info" ng-click="vm.search(vm.searchQuery)">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                        <span class="input-group-btn width-min" ng-if="vm.currentSearch">
+                            <button class="btn btn-info" ng-click="vm.clear()">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="accountNumber"><span>Account Number</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="bankId"><span>Bank Id</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="bankName"><span>Bank Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="branchName"><span>Branch Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="accountName"><span>Account Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="defaultBankAccount"><span>Default Bank Account</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="profile.id"><span>Profile</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
+                <tr ng-repeat="bankAccount in vm.bankAccounts track by bankAccount.id">
+                    <td><a ui-sref="bank-account-detail({id:bankAccount.id})">{{bankAccount.id}}</a></td>
+                    <td>{{bankAccount.accountNumber}}</td>
+                    <td>{{bankAccount.bankId}}</td>
+                    <td>{{bankAccount.bankName}}</td>
+                    <td>{{bankAccount.branchName}}</td>
+                    <td>{{bankAccount.accountName}}</td>
+                    <td>{{bankAccount.defaultBankAccount}}</td>
+                    <td>
+                        <a ui-sref="profile-detail({id:bankAccount.profile.id})">{{bankAccount.profile.id}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="bank-account-detail({id:bankAccount.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="bank-account.edit({id:bankAccount.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="bank-account.delete({id:bankAccount.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

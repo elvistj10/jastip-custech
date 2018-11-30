@@ -1,0 +1,36 @@
+
+<div>
+    <h2><span>M Package Size</span> {{vm.mPackageSize.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Package Size Name</span></dt>
+        <dd>
+            <span>{{vm.mPackageSize.packageSizeName}}</span>
+        </dd>
+        <dt><span>Package Size Desciption</span></dt>
+        <dd>
+            <span>{{vm.mPackageSize.packageSizeDesciption}}</span>
+        </dd>
+        <dt><span>Package Size Thumb</span></dt>
+        <dd>
+            <div ng-if="vm.mPackageSize.packageSizeThumb">
+                <a ng-click="vm.openFile(vm.mPackageSize.packageSizeThumbContentType, vm.mPackageSize.packageSizeThumb)">
+                    <img data-ng-src="{{'data:' + vm.mPackageSize.packageSizeThumbContentType + ';base64,' + vm.mPackageSize.packageSizeThumb}}" style="max-width: 100%;" alt="mPackageSize image"/>
+                </a>
+                {{vm.mPackageSize.packageSizeThumbContentType}}, {{vm.byteSize(vm.mPackageSize.packageSizeThumb)}}
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="m-package-size-detail.edit({id:vm.mPackageSize.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

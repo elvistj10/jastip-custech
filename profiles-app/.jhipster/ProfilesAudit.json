@@ -1,0 +1,25 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "entityName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "entityId",
+            "fieldType": "Long"
+        }
+    ],
+    "changelogDate": "20181121041834",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "profiles_audit",
+    "jpaMetamodelFiltering": false,
+    "pagination": "infinite-scroll",
+    "microserviceName": "ProfilesApp",
+    "searchEngine": "elasticsearch"
+}

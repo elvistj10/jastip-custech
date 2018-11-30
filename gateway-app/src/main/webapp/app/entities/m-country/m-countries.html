@@ -1,0 +1,85 @@
+<div>
+    <h2>M Countries</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="m-country.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new M Country
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span>ID</span></th>
+                    <th><span>Country Name</span></th>
+                    <th><span>Image</span></th>
+                    <th><span>Image Url</span></th>
+                    <th><span>Image Thumb Url</span></th>
+                    <th><span>Image Flag</span></th>
+                    <th><span>Image Flag Url</span></th>
+                    <th><span>Image Flag Thumb Url</span></th>
+                    <th><span>Country Code</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="mCountry in vm.mCountries track by mCountry.id">
+                    <td><a ui-sref="m-country-detail({id:mCountry.id})">{{mCountry.id}}</a></td>
+                    <td>{{mCountry.countryName}}</td>
+                    <td>
+                        <a ng-if="mCountry.image" ng-click="vm.openFile(mCountry.imageContentType, mCountry.image)">
+                            <img data-ng-src="{{'data:' + mCountry.imageContentType + ';base64,' + mCountry.image}}" style="max-height: 30px;" alt="mCountry image"/>
+                        </a>
+                        <span ng-if="mCountry.image">{{mCountry.imageContentType}}, {{vm.byteSize(mCountry.image)}}</span>
+                    </td>
+                    <td>{{mCountry.imageUrl}}</td>
+                    <td>
+                        <a ng-if="mCountry.imageThumbUrl" ng-click="vm.openFile(mCountry.imageThumbUrlContentType, mCountry.imageThumbUrl)">
+                            <img data-ng-src="{{'data:' + mCountry.imageThumbUrlContentType + ';base64,' + mCountry.imageThumbUrl}}" style="max-height: 30px;" alt="mCountry image"/>
+                        </a>
+                        <span ng-if="mCountry.imageThumbUrl">{{mCountry.imageThumbUrlContentType}}, {{vm.byteSize(mCountry.imageThumbUrl)}}</span>
+                    </td>
+                    <td>
+                        <a ng-if="mCountry.imageFlag" ng-click="vm.openFile(mCountry.imageFlagContentType, mCountry.imageFlag)">
+                            <img data-ng-src="{{'data:' + mCountry.imageFlagContentType + ';base64,' + mCountry.imageFlag}}" style="max-height: 30px;" alt="mCountry image"/>
+                        </a>
+                        <span ng-if="mCountry.imageFlag">{{mCountry.imageFlagContentType}}, {{vm.byteSize(mCountry.imageFlag)}}</span>
+                    </td>
+                    <td>{{mCountry.imageFlagUrl}}</td>
+                    <td>{{mCountry.imageFlagThumbUrl}}</td>
+                    <td>{{mCountry.countryCode}}</td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="m-country-detail({id:mCountry.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="m-country.edit({id:mCountry.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="m-country.delete({id:mCountry.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
